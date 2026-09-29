@@ -103,7 +103,7 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 rounded">Mục 1.1 trong Docs</span>
-            <h2 class="text-base font-bold text-slate-900">MỨC ĐỘ HOÀN THÀNH KẾ HOẠCH (BÁO CÁO KẾT QUẢ THÁNG 09)</h2>
+            <h2 id="sec11MonthTitle" class="text-base font-bold text-slate-900">MỨC ĐỘ HOÀN THÀNH KẾ HOẠCH (BÁO CÁO KẾT QUẢ THÁNG 09)</h2>
           </div>
           <p class="text-xs text-slate-500 mt-0.5">Bảng tổng kết chỉ tiêu doanh thu thực tế, tiến độ target và so sánh luỹ kế toàn Vùng HCM</p>
         </div>
@@ -116,7 +116,7 @@
       <!-- Thanh tiến độ Target trực quan -->
       <div class="space-y-1.5">
         <div class="flex justify-between text-xs font-semibold">
-          <span class="text-slate-600">Tiến độ thực hiện Target Doanh thu LTC SO (5.58 Tỷ / 8.435 Tỷ)</span>
+          <span id="sec11SubTitleProgress" class="text-slate-600">Tiến độ thực hiện Target Doanh thu LTC SO (5.58 Tỷ / 8.435 Tỷ)</span>
           <span id="sec11ProgressBarText" class="text-blue-700 font-bold">66.21%</span>
         </div>
         <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200">
@@ -1499,64 +1499,25 @@
         const banMoiDiffEl = document.getElementById("sec11BanMoiDiff");
         if (banMoiDiffEl) banMoiDiffEl.innerHTML = data.sec11.banMoiDiff;
 
-        // Thanh tiến độ trực quan
+                // Thanh tiến độ trực quan & Tiêu đề Tháng
         const badge = document.getElementById("sec11BadgeProgress");
         if (badge) badge.textContent = `${data.sec11.pct} / ${data.targetThang || '8.435 Tỷ ₫'}`;
-        const bar = document.getElementById("sec11ProgressBar");
+        const bar = document.getElementById("sec11ProgressBarFill");
         if (bar) bar.style.width = data.sec11.progressWidth || "0%";
         const barText = document.getElementById("sec11ProgressBarText");
         if (barText) barText.textContent = data.sec11.pct;
-      }
-    } {
-      const data = WEEK_DATA[weekKey];
-      
-      ["W39", "W38", "W37", "W36"].forEach(w => {
-        const btn = document.getElementById("btn" + w);
-        if (w === weekKey) {
-          btn.className = "px-3.5 py-1.5 text-xs rounded-lg font-semibold transition week-active flex items-center gap-1.5";
-        } else {
-          btn.className = "px-3 py-1.5 text-xs rounded-lg font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition";
+
+        const subTitleProg = document.getElementById("sec11SubTitleProgress");
+        if (subTitleProg) {
+          const ltcTr = data.sec11.ltcSo.split(',')[0];
+          subTitleProg.textContent = `Tiến độ thực hiện Target Doanh thu LTC SO (${ltcTr} Tr ₫ / ${data.targetThang || '8.435 Tỷ ₫'})`;
         }
-      });
 
-      document.getElementById("kpi1Title").textContent = "DOANH THU GIỮ CŨ " + (weekKey === "W39" ? "TUẦN 39" : (weekKey === "W38" ? "TUẦN 38" : (weekKey === "W37" ? "TUẦN 37" : "TUẦN 36")));
-      document.getElementById("kpi1Val").textContent = data.revenue;
-      const kpi1WoW = document.getElementById("kpi1WoW");
-      kpi1WoW.textContent = data.wow;
-      kpi1WoW.className = "font-bold " + data.wowColor;
-
-      document.getElementById("kpi2Val").textContent = data.churnVal;
-      document.getElementById("kpi2Sub").textContent = data.retention;
-
-      const banner = document.getElementById("alertBanner");
-      banner.className = data.alertBg + " border-l-4 " + data.alertBorder + " rounded-xl p-4 shadow-sm space-y-1";
-      document.getElementById("alertTitle").className = "text-xs md:text-sm font-bold " + data.alertText;
-      document.getElementById("alertTitle").textContent = data.alertTitle;
-      document.getElementById("alertBody").innerHTML = data.alertBody;
-
-      document.getElementById("briefingTitle").textContent = `Bản Tin Điều Hành 30 Giây Gửi Giám Đốc Vùng (${weekKey === 'W39' ? 'Tuần 39 - Mới Nhất' : (weekKey === 'W38' ? 'Tuần 38' : 'Tuần 37')})`;
-      document.getElementById("briefingContent").textContent = data.briefing;
-
-      // Cập nhật động toàn bộ Bảng Mục 1.1 Tổng quan Kế hoạch Tháng 09 theo đúng số liệu từng tuần
-      if (data.sec11) {
-        document.getElementById("sec11LtcSo").textContent = data.sec11.ltcSo;
-        document.getElementById("sec11Target").textContent = data.sec11.target;
-        document.getElementById("sec11Pct").innerHTML = `<span class="px-2.5 py-1 rounded-full ${data.sec11.pctClass}">${data.sec11.pct}</span>`;
-        document.getElementById("sec11Diff").innerHTML = data.sec11.diff;
-        document.getElementById("sec11Gttc").textContent = data.sec11.gttc;
-        document.getElementById("sec11GttcDiff").innerHTML = data.sec11.gttcDiff;
-        document.getElementById("sec11GiuCu").textContent = data.sec11.giuCu;
-        document.getElementById("sec11GiuCuSub").textContent = data.sec11.giuCuSub;
-        document.getElementById("sec11GiuCuNote").textContent = data.sec11.giuCuNote;
-        document.getElementById("sec11BanMoi").textContent = data.sec11.banMoi;
-        document.getElementById("sec11BanMoiSub").textContent = data.sec11.banMoiSub;
-        document.getElementById("sec11BanMoiDiff").innerHTML = data.sec11.banMoiDiff;
-        
-        document.getElementById("sec11ProgressBarText").textContent = data.sec11.pct;
-        document.getElementById("sec11BadgeProgress").textContent = `${data.sec11.pct} / 8.435 Tỷ ₫`;
-        document.getElementById("sec11ProgressBarFill").style.width = data.sec11.progressWidth;
+        const monthTitle = document.getElementById("sec11MonthTitle");
+        if (monthTitle) {
+          monthTitle.textContent = `MỨC ĐỘ HOÀN THÀNH KẾ HOẠCH (${data.title.toUpperCase()})`;
+        }
       }
-
     }
 
     function copyBriefing() {
