@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Báo Cáo Kết Quả Kinh Doanh [Vùng HCM] - Cập Nhật Tuần 39 Mới Nhất</title>
+  <title>Báo Cáo Kết Quả Kinh Doanh [Vùng HCM] - Cập Nhật Đầy Đủ Docs & Sheets</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -25,23 +25,51 @@
           <span class="text-xs text-slate-300 font-medium">BÁO CÁO KINH DOANH VÙNG HCM (THÁNG 09/2026)</span>
         </div>
         <h1 class="text-2xl md:text-3xl font-bold tracking-tight">DASHBOARD ĐIỀU HÀNH KINH DOANH VÙNG HCM</h1>
-        <p class="text-slate-300 text-xs mt-1">Đồng bộ từ Google Sheets <code>HCM-BÁO CÁO KINH DOANH</code> & Google Docs <code>BÁO CÁO KẾT QUẢ KD</code></p>
+        <p class="text-slate-300 text-xs mt-1">Đồng bộ hoàn chỉnh từ Google Sheets <code>HCM-BÁO CÁO KINH DOANH</code> & Google Docs <code>BÁO CÁO KẾT QUẢ KD</code></p>
       </div>
 
-      <!-- Controls: Chuyển đổi Tuần Báo Cáo -->
-      <div class="flex flex-col sm:flex-row items-end sm:items-center gap-3">
-        <div class="bg-white/10 backdrop-blur-md rounded-xl p-1.5 border border-white/15 flex items-center gap-1">
-          <span class="text-xs font-medium text-slate-300 px-2">Xem Tuần:</span>
-          <button id="btnW39" onclick="switchWeek('W39')" class="px-3.5 py-1.5 text-xs rounded-lg font-semibold transition week-active flex items-center gap-1.5">
-            <span>Tuần 39</span>
-            <span class="px-1.5 py-0.2 text-[9px] bg-emerald-400 text-slate-900 rounded-full font-bold">MỚI</span>
-          </button>
-          <button id="btnW38" onclick="switchWeek('W38')" class="px-3 py-1.5 text-xs rounded-lg font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition">Tuần 38</button>
-          <button id="btnW37" onclick="switchWeek('W37')" class="px-3 py-1.5 text-xs rounded-lg font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition">Tuần 37</button>
+      <!-- Controls: Bộ Filter Chọn Tuần Gọn Gàng (Compact Dropdown) -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center bg-slate-900/80 hover:bg-slate-900 border border-white/20 rounded-xl p-1.5 shadow-md backdrop-blur-md transition">
+          <div class="flex items-center gap-1.5 pl-2 pr-1 text-slate-300 text-xs font-semibold">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="hidden sm:inline">Tuần:</span>
+          </div>
+          
+          <div class="relative">
+            <select id="weekSelect" onchange="switchWeek(this.value)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg pl-3 pr-8 py-1.5 border-0 focus:ring-2 focus:ring-blue-300 outline-none cursor-pointer transition appearance-none shadow-sm">
+              <optgroup label="── Tháng 09/2026 (Hiện tại) ──" class="bg-slate-800 text-white font-bold">
+                <option value="W39" selected>Tuần 39 (Mới Nhất) • 66.21%</option>
+                <option value="W38">Tuần 38 • 49.50%</option>
+                <option value="W37">Tuần 37 • 32.48%</option>
+                <option value="W36">Tuần 36 • 15.27%</option>
+                <option value="W35">Tuần 35 • 15.27%</option>
+              </optgroup>
+              <optgroup label="── Tháng 08/2026 ──" class="bg-slate-800 text-slate-300">
+                <option value="W34">Tuần 34 • 61.91%</option>
+                <option value="W33">Tuần 33 • 44.50%</option>
+                <option value="W32">Tuần 32 • 26.07%</option>
+              </optgroup>
+              <optgroup label="── Tháng 07/2026 ──" class="bg-slate-800 text-slate-300">
+                <option value="W31">Tuần 31 • 89.30%</option>
+                <option value="W30">Tuần 30 • 72.68%</option>
+                <option value="W29">Tuần 29 • 54.70%</option>
+                <option value="W28">Tuần 28 • 32.00%</option>
+              </optgroup>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="bg-white/10 backdrop-blur-md rounded-xl px-3.5 py-1.5 border border-white/15 text-right hidden lg:block">
-          <div class="text-[10px] text-slate-300">Target Tháng Vùng</div>
-          <div class="text-sm font-bold text-white tracking-tight">8,435,000,000 ₫</div>
+
+        <div class="bg-white/10 backdrop-blur-md rounded-xl px-3 py-1.5 border border-white/15 text-right hidden sm:block">
+          <div class="text-[9px] uppercase tracking-wider text-slate-300 font-medium">Target Tháng Vùng</div>
+          <div id="headerTargetVal" class="text-xs font-bold text-white tracking-tight">8,435,000,000 ₫</div>
         </div>
       </div>
     </header>
@@ -55,17 +83,120 @@
         </span>
         <div>
           <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-emerald-950">🎉 ĐÃ ĐỒNG BỘ THÀNH CÔNG DỮ LIỆU TUẦN 39 MỚI NHẤT TỪ GOOGLE SHEETS!</span>
-            <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-600 text-white rounded-full">ĐÃ XÁC NHẬN</span>
+            <span id="syncStatusTitle" class="text-xs font-bold text-emerald-950">🎉 ĐÃ ĐỒNG BỘ HOÀN HẢO SỐ LIỆU TUẦN 39 TỪ GOOGLE DOCS & GOOGLE SHEETS!</span>
+            <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-600 text-white rounded-full">ĐỒNG BỘ 100%</span>
           </div>
-          <p class="text-[11px] text-emerald-800 mt-0.5">
-            • <strong>Đối soát Tuần 39:</strong> Doanh thu giữ cũ đạt <strong>401.0 Tr ₫</strong> (tăng trưởng 330.1%) | MTD Khách A vọt lên <strong>3.155 Tỷ ₫</strong> | <strong>2 AM Vượt Target</strong> (Lê Trọng Tùng 149.5%, Trần Nguyễn Long Huy 115.3%) | KHM: <strong>350.5 Tr ₫</strong>
+          <p id="syncStatusDesc" class="text-[11px] text-emerald-800 mt-0.5">
+            • <strong>Tiến độ Tuần 39:</strong> Doanh thu LTC SO đạt <strong>5,584,792,001 ₫</strong> (đạt <strong>66.21%</strong> Target) | Tổng GTTC: <strong>5.577 Tỷ ₫</strong> | Bán mới: <strong>350.5 Tr ₫</strong> | Giữ cũ: <strong>401.0 Tr ₫</strong>
           </p>
         </div>
       </div>
 
       <div class="flex items-center gap-2 self-end md:self-center">
-        <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-lg" id="liveSyncTimestamp">🕒 Vừa đồng bộ: 15:21:00 - 29/09/2026</span>
+        <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-lg" id="liveSyncTimestamp">🕒 Vừa đồng bộ: 15:45:00 - 29/09/2026</span>
+      </div>
+    </div>
+
+    <!-- MỤC MỚI: 1.1. MỨC ĐỘ HOÀN THÀNH KẾ HOẠCH (TRÍCH XUẤT NGUYÊN BẢN TỪ GOOGLE DOCS) -->
+    <div class="bg-white border border-blue-200 rounded-2xl p-5 shadow-sm space-y-4 ring-1 ring-blue-500/10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b pb-3">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-800 rounded">Mục 1.1 trong Docs</span>
+            <h2 class="text-base font-bold text-slate-900">MỨC ĐỘ HOÀN THÀNH KẾ HOẠCH (BÁO CÁO KẾT QUẢ THÁNG 09)</h2>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5">Bảng tổng kết chỉ tiêu doanh thu thực tế, tiến độ target và so sánh luỹ kế toàn Vùng HCM</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-500">Tiến độ Target:</span>
+          <span id="sec11BadgeProgress" class="text-sm font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">66.21% / 8.435 Tỷ ₫</span>
+        </div>
+      </div>
+
+      <!-- Thanh tiến độ Target trực quan -->
+      <div class="space-y-1.5">
+        <div class="flex justify-between text-xs font-semibold">
+          <span class="text-slate-600">Tiến độ thực hiện Target Doanh thu LTC SO (5.58 Tỷ / 8.435 Tỷ)</span>
+          <span id="sec11ProgressBarText" class="text-blue-700 font-bold">66.21%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200">
+          <div id="sec11ProgressBarFill" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full transition-all duration-500" style="width: 66.21%;"></div>
+        </div>
+      </div>
+
+      <!-- Bảng đối soát chuẩn nguyên bản Docs (TỰ ĐỘNG THAY ĐỔI THEO TUẦN ĐƯỢC CHỌN) -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left">
+          <thead class="bg-blue-600 text-white font-semibold uppercase text-[11px]">
+            <tr>
+              <th class="py-3 px-4 rounded-tl-lg">Chỉ tiêu</th>
+              <th class="py-3 px-4 text-right">Doanh thu Thực tế (₫)</th>
+              <th class="py-3 px-4 text-right">Target trong tháng (₫)</th>
+              <th class="py-3 px-4 text-center">% Hoàn thành target</th>
+              <th class="py-3 px-4 rounded-tr-lg">So với tuần trước</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-slate-700">
+            <!-- Row 1: Tổng doanh thu LTC SO -->
+            <tr class="bg-blue-50/40 hover:bg-blue-100/50 transition">
+              <td class="py-3.5 px-4 font-bold text-blue-950">
+                <span class="text-blue-700 underline text-sm">Tổng doanh thu LTC SO</span><br>
+                <span class="text-[11px] text-slate-500 font-normal italic">(Doanh thu tháng N)</span>
+              </td>
+              <td id="sec11LtcSo" class="py-3.5 px-4 text-right font-bold text-blue-950 text-base">5,584,792,001</td>
+              <td id="sec11Target" class="py-3.5 px-4 text-right font-semibold text-slate-700 text-sm">8,435,000,000</td>
+              <td id="sec11Pct" class="py-3.5 px-4 text-center font-bold text-blue-700 text-sm">
+                <span class="px-2.5 py-1 rounded-full bg-blue-100 border border-blue-200">66.21%</span>
+              </td>
+              <td id="sec11Diff" class="py-3.5 px-4 font-semibold text-emerald-700">
+                +1,409,089,262 ₫ ▲<br>
+                <span class="text-[10px] text-slate-500 font-normal">(So với Tuần 38: 4.175 tỷ)</span>
+              </td>
+            </tr>
+
+            <!-- Row 2: Tổng doanh thu GTTC -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-4 font-bold text-slate-900">
+                <span>Tổng doanh thu GTTC</span><br>
+                <span class="text-[11px] text-slate-500 font-normal italic">(Doanh thu tháng N)</span>
+              </td>
+              <td id="sec11Gttc" class="py-3 px-4 text-right font-bold text-slate-900 text-sm">5,576,975,665</td>
+              <td class="py-3 px-4 text-right text-slate-400 font-medium">—</td>
+              <td class="py-3 px-4 text-center text-slate-400 font-medium">—</td>
+              <td id="sec11GttcDiff" class="py-3 px-4 font-semibold text-emerald-700">
+                +1,433,442,314 ₫ ▲<br>
+                <span class="text-[10px] text-slate-500 font-normal">(So với Tuần 38: 4.143 tỷ)</span>
+              </td>
+            </tr>
+
+            <!-- Row 3: Doanh thu giữ cũ -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-4 font-bold text-slate-900">
+                <span>Doanh thu giữ cũ</span><br>
+                <span class="text-[11px] text-slate-500 font-normal italic">(Doanh thu tháng N)</span>
+              </td>
+              <td id="sec11GiuCu" class="py-3 px-4 text-right font-bold text-indigo-900 text-sm">4,261,846,760</td>
+              <td class="py-3 px-4 text-right text-slate-400 font-medium">—</td>
+              <td id="sec11GiuCuSub" class="py-3 px-4 text-center text-slate-700 font-medium">Chiếm 76.3% tổng DT</td>
+              <td id="sec11GiuCuNote" class="py-3 px-4 text-slate-600">Duy trì ổn định nền tảng giữ cũ</td>
+            </tr>
+
+            <!-- Row 4: Doanh thu bán mới -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-4 font-bold text-slate-900">
+                <span>Doanh thu bán mới</span><br>
+                <span class="text-[11px] text-slate-500 font-normal italic">(Doanh thu KH mới trong tháng N)</span>
+              </td>
+              <td id="sec11BanMoi" class="py-3 px-4 text-right font-bold text-emerald-700 text-sm">350,535,910</td>
+              <td class="py-3 px-4 text-right text-slate-400 font-medium">—</td>
+              <td id="sec11BanMoiSub" class="py-3 px-4 text-center text-emerald-700 font-bold">12,495 đơn KHM</td>
+              <td id="sec11BanMoiDiff" class="py-3 px-4 font-semibold text-emerald-700">
+                +88,459,863 ₫ ▲<br>
+                <span class="text-[10px] text-slate-500 font-normal">(Tăng +33.8% sv mốc 262 Tr)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -98,7 +229,7 @@
         </div>
         <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
           <span class="text-slate-500">So với tuần trước:</span>
-          <span id="kpi1WoW" class="font-bold text-emerald-600">+1.7% ▲ (Bắt đầu hồi phục)</span>
+          <span id="kpi1WoW" class="font-bold text-emerald-600">+1.7% ▲ (Bắt đầu chu kỳ tăng)</span>
         </div>
       </div>
 
@@ -114,131 +245,172 @@
         </div>
         <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
           <span class="text-slate-500">Tỷ lệ giữ doanh thu:</span>
-          <span id="kpi2Sub" class="font-bold text-emerald-700">330.10% (Bật tăng mạnh)</span>
+          <span id="kpi2Sub" class="font-bold text-emerald-700">330.10% (Bật tăng vượt trội)</span>
         </div>
       </div>
 
       <!-- Card 3: Doanh thu Bán Mới KHM -->
       <div class="kpi-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
         <div class="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
-          <span>BÁN MỚI (KHM THÁNG 9)</span>
+          <span id="kpi3Title">BÁN MỚI (KHM TUẦN 39)</span>
           <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-lg font-bold">NEW</span>
         </div>
         <div class="flex items-baseline gap-1.5 mb-2">
-          <span class="text-2xl font-bold text-emerald-700 tracking-tight">350,535,910</span>
+          <span id="kpi3Val" class="text-2xl font-bold text-emerald-700 tracking-tight">350,535,910</span>
           <span class="text-xs text-slate-500 font-medium">₫</span>
         </div>
         <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-          <span class="text-slate-500">Sản lượng KHM:</span>
-          <span class="font-bold text-emerald-700">12,495 đơn (+32% sv T38)</span>
+          <span id="kpi3SubLabel" class="text-slate-500">Sản lượng KHM:</span>
+          <span id="kpi3Sub" class="font-bold text-emerald-700">12,495 đơn (+32% sv T38)</span>
         </div>
       </div>
 
       <!-- Card 4: Doanh thu Khách hàng A (MTD) -->
       <div class="kpi-card bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
         <div class="flex items-center justify-between text-xs text-slate-500 font-semibold mb-2">
-          <span>DOANH THU KHÁCH A (MTD)</span>
+          <span id="kpi4Title">DOANH THU KHÁCH A (MTD)</span>
           <span class="p-1.5 bg-purple-50 text-purple-600 rounded-lg font-bold">KEY</span>
         </div>
         <div class="flex items-baseline gap-1.5 mb-2">
-          <span class="text-2xl font-bold text-purple-900 tracking-tight">3,155,108,886</span>
+          <span id="kpi4Val" class="text-2xl font-bold text-purple-900 tracking-tight">3,155,108,886</span>
           <span class="text-xs text-slate-500 font-medium">₫</span>
         </div>
         <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-          <span class="text-slate-500">Tăng thêm sv T38:</span>
-          <span class="font-bold text-purple-800">+790.3 Triệu VNĐ (+33.4%)</span>
+          <span id="kpi4SubLabel" class="text-slate-500">Tăng thêm sv T38:</span>
+          <span id="kpi4Sub" class="font-bold text-purple-800">+790.3 Triệu VNĐ (+33.4%)</span>
         </div>
       </div>
 
     </div>
 
-    <!-- II. BẢNG ĐỐI SOÁT 3 TUẦN LIÊN TIẾP (TUẦN 37 -> TUẦN 38 -> TUẦN 39) -->
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
+    <!-- II. BẢNG ĐỐI SOÁT 4 TUẦN LIÊN TIẾP THÁNG 09 (TUẦN 36 -> TUẦN 37 -> TUẦN 38 -> TUẦN 39) -->
+    <div class="bg-white border rounded-2xl p-5 shadow-sm space-y-4">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b pb-3">
         <div>
           <h2 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
-            <span>⚖️</span> BẢNG ĐỐI SOÁT DIỄN BIẾN 3 TUẦN: TUẦN 37 – TUẦN 38 – TUẦN 39
+            <span>⚖️</span> BẢNG ĐỐI SOÁT DIỄN BIẾN TOÀN DIỆN 4 TUẦN THÁNG 09: TUẦN 36 – TUẦN 37 – TUẦN 38 – TUẦN 39
           </h2>
-          <p class="text-xs text-slate-500">So sánh quy mô doanh thu, biến động số lượng khách hàng và tỷ lệ giữ chân theo từng phân khúc</p>
+          <p class="text-xs text-slate-500">Đồng bộ 100% từ Google Docs các tuần: Doanh thu LTC SO luỹ kế, Giữ cũ, Bán mới và Biến động số lượng khách hàng</p>
         </div>
-        <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">Dữ liệu Tuần 39 mới nhất</span>
+        <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full border border-emerald-200">Đồng bộ đầy đủ 4 tuần</span>
       </div>
 
       <div class="overflow-x-auto">
         <table class="w-full text-xs text-left">
           <thead class="bg-slate-100 text-slate-700 font-semibold border-b uppercase">
             <tr>
-              <th class="py-3 px-3">Phân Khúc KH</th>
-              <th class="py-3 px-3 text-right bg-slate-50">DT Tuần 37</th>
-              <th class="py-3 px-3 text-center bg-slate-50">Biến động KH T37</th>
-              <th class="py-3 px-3 text-right bg-blue-50/50">DT Tuần 38</th>
-              <th class="py-3 px-3 text-center bg-blue-50/50">Biến động KH T38</th>
-              <th class="py-3 px-3 text-right bg-emerald-50 font-bold text-emerald-950">DT Tuần 39 (Mới)</th>
-              <th class="py-3 px-3 text-center bg-emerald-50 font-bold text-emerald-950">Biến động KH T39</th>
-              <th class="py-3 px-3 text-right bg-emerald-50 font-bold text-emerald-950">% Giữ DT T39</th>
-              <th class="py-3 px-3 text-center">Xu hướng Tuần 39</th>
+              <th class="py-3 px-3">Chỉ Tiêu / Phân Khúc</th>
+              <th class="py-3 px-3 text-right bg-slate-50">Tuần 36 (Đầu tháng)</th>
+              <th class="py-3 px-3 text-right bg-blue-50/30">Tuần 37</th>
+              <th class="py-3 px-3 text-right bg-amber-50/30">Tuần 38</th>
+              <th class="py-3 px-3 text-right bg-emerald-50 font-bold text-emerald-950">Tuần 39 (Mới Nhất)</th>
+              <th class="py-3 px-3 text-center">Đánh giá chu kỳ</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-700">
-            <!-- Nhóm A -->
-            <tr class="hover:bg-slate-50 transition">
-              <td class="py-3 px-3 font-bold text-slate-900">
-                <span class="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 text-purple-800 font-bold mr-1.5">NHÓM A</span>
-                Khách lớn (&gt; 45 Tr)
+            <!-- 1. Doanh thu LTC SO -->
+            <tr class="hover:bg-slate-50 transition bg-blue-50/20 font-bold text-blue-950">
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-100 text-blue-800 font-bold mr-1.5">LTC SO</span>
+                Lũy kế Doanh thu LTC SO
               </td>
-              <td class="py-3 px-3 text-right text-slate-500">119,267,546 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-500">0 KH</td>
-              <td class="py-3 px-3 text-right text-slate-700">25,980,249 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-700">0 KH</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-900">34,195,016 ₫</td>
-              <td class="py-3 px-3 text-center font-bold bg-emerald-50/70 text-emerald-700">0 KH</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">131.70% ▲</td>
-              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Hồi phục mạnh (+31.7%)</span></td>
+              <td class="py-3 px-3 text-right">1,288,704,546 ₫ <span class="text-[10px] font-normal text-slate-500">(15.3%)</span></td>
+              <td class="py-3 px-3 text-right">2,739,790,763 ₫ <span class="text-[10px] font-normal text-slate-500">(32.5%)</span></td>
+              <td class="py-3 px-3 text-right">4,175,702,739 ₫ <span class="text-[10px] font-normal text-slate-500">(49.5%)</span></td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-950">5,584,792,001 ₫ <span class="text-[10px] font-bold text-emerald-700">(66.21%)</span></td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Tăng đều +1.4 Tỷ/tuần</span></td>
             </tr>
 
-            <!-- Nhóm BCD -->
+            <!-- 2. Doanh thu GTTC -->
             <tr class="hover:bg-slate-50 transition">
-              <td class="py-3 px-3 font-bold text-slate-900">
-                <span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-100 text-blue-800 font-bold mr-1.5">NHÓM BCD</span>
-                Tầm trung (9 - 45 Tr)
+              <td class="py-3 px-3 font-semibold text-slate-900">
+                <span class="px-2 py-0.5 rounded-full text-[10px] bg-indigo-100 text-indigo-800 font-bold mr-1.5">GTTC</span>
+                Tổng doanh thu GTTC
               </td>
-              <td class="py-3 px-3 text-right text-slate-500">353,219,071 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-500">-1 KH</td>
-              <td class="py-3 px-3 text-right text-slate-700">91,379,029 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-700">-1 KH</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-slate-900">89,947,935 ₫</td>
-              <td class="py-3 px-3 text-center font-bold bg-emerald-50/70 text-emerald-700">+2 KH 🎯</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-slate-800">98.40%</td>
-              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Tăng thêm 2 KH mới</span></td>
+              <td class="py-3 px-3 text-right text-slate-600">90,827,581 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-600">2,678,679,686 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-700">4,143,533,351 ₫</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-slate-900">5,576,975,665 ₫</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Đạt 99.8% LTC SO</span></td>
             </tr>
 
-            <!-- Nhóm EF -->
+            <!-- 3. Doanh thu Bán mới -->
             <tr class="hover:bg-slate-50 transition">
-              <td class="py-3 px-3 font-bold text-slate-900">
-                <span class="px-2 py-0.5 rounded-full text-[10px] bg-rose-100 text-rose-800 font-bold mr-1.5">NHÓM EF</span>
-                Đại trà (&le; 9 Tr)
+              <td class="py-3 px-3 font-semibold text-emerald-900">
+                <span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-bold mr-1.5">BÁN MỚI</span>
+                Doanh thu KHM (Bán mới)
               </td>
-              <td class="py-3 px-3 text-right text-slate-500">1,035,397,362 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-500">-31 KH</td>
-              <td class="py-3 px-3 text-right text-slate-700">277,091,504 ₫</td>
-              <td class="py-3 px-3 text-center text-rose-600">-49 KH</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-slate-900">276,877,138 ₫</td>
-              <td class="py-3 px-3 text-center font-bold bg-emerald-50/70 text-amber-700">-33 KH</td>
-              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">100.00% 🎯</td>
-              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Giảm tốc rời bỏ (-33 KH)</span></td>
+              <td class="py-3 px-3 text-right text-slate-600">90,827,581 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-600">111,211,192 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-700">262,076,047 ₫</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">350,535,910 ₫</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">12,495 đơn (Bật tăng)</span></td>
             </tr>
 
-            <!-- Grand Total -->
-            <tr class="bg-slate-100 font-bold text-slate-900">
-              <td class="py-3 px-3 text-sm">TỔNG CỘNG (GRAND TOTAL)</td>
-              <td class="py-3 px-3 text-right text-slate-600">1,507,883,979 ₫</td>
-              <td class="py-3 px-3 text-center text-slate-600">-32 KH</td>
-              <td class="py-3 px-3 text-right text-slate-700">394,450,782 ₫</td>
-              <td class="py-3 px-3 text-center text-rose-600">-50 KH</td>
-              <td class="py-3 px-3 text-right text-sm bg-emerald-100 text-emerald-950 font-bold">401,020,089 ₫</td>
-              <td class="py-3 px-3 text-center text-sm bg-emerald-100 text-amber-800 font-bold">-31 KH</td>
-              <td class="py-3 px-3 text-right text-sm bg-emerald-100 text-emerald-700 font-bold">330.10% ▲</td>
-              <td class="py-3 px-3 text-center text-xs font-bold text-emerald-700">Bắt đầu chu kỳ tăng trưởng mới</td>
+            <!-- 4. Doanh thu Giữ cũ theo tuần -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 font-bold text-slate-900">
+                <span class="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 text-purple-800 font-bold mr-1.5">GIỮ CŨ TUẦN</span>
+                Doanh thu giữ cũ (N-1)
+              </td>
+              <td class="py-3 px-3 text-right text-slate-600 font-semibold">1,485,556,467 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-600 font-semibold">410,029,690 ₫</td>
+              <td class="py-3 px-3 text-right text-slate-700 font-semibold">394,450,782 ₫</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-900">401,020,089 ₫</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">+1.7% sv W38 (Hồi phục)</span></td>
+            </tr>
+
+            <!-- 5. Tốc độ giữ DT -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 font-medium text-slate-700 pl-6">↳ % Tốc độ giữ DT (% sv W-1)</td>
+              <td class="py-3 px-3 text-right text-slate-600">338.00%</td>
+              <td class="py-3 px-3 text-right text-slate-600">297.10%</td>
+              <td class="py-3 px-3 text-right text-rose-600">270.60%</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">330.10% ▲</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Bứt phá trở lại</span></td>
+            </tr>
+
+            <!-- 6. Biến động Khách hàng -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 font-semibold text-slate-900">
+                <span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 text-amber-800 font-bold mr-1.5">KHÁCH HÀNG</span>
+                Biến động số lượng KH ròng
+              </td>
+              <td class="py-3 px-3 text-right font-bold text-emerald-700">+300 KH</td>
+              <td class="py-3 px-3 text-right font-bold text-amber-700">-60 KH</td>
+              <td class="py-3 px-3 text-right font-bold text-rose-600">-50 KH</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-amber-800">-31 KH</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Giảm tốc đà rơi</span></td>
+            </tr>
+
+            <!-- 7. Nhóm VIP A -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 text-slate-600 pl-6">↳ Trong đó Nhóm VIP A</td>
+              <td class="py-3 px-3 text-right text-slate-500">0 KH (122.3 Tr)</td>
+              <td class="py-3 px-3 text-right text-slate-500">0 KH (33.3 Tr)</td>
+              <td class="py-3 px-3 text-right text-slate-500">0 KH (26.0 Tr)</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">0 KH (34.2 Tr ▲)</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">+31.7% doanh thu</span></td>
+            </tr>
+
+            <!-- 8. Nhóm BCD -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 text-slate-600 pl-6">↳ Trong đó Nhóm BCD</td>
+              <td class="py-3 px-3 text-right text-rose-600">-26 KH</td>
+              <td class="py-3 px-3 text-right text-slate-500">0 KH</td>
+              <td class="py-3 px-3 text-right text-rose-600">-1 KH</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-emerald-700">+2 KH 🎯</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Tăng trưởng dương (+)</span></td>
+            </tr>
+
+            <!-- 9. Nhóm EF -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3 px-3 text-slate-600 pl-6">↳ Trong đó Nhóm EF</td>
+              <td class="py-3 px-3 text-right text-emerald-700">+326 KH</td>
+              <td class="py-3 px-3 text-right text-rose-600">-60 KH</td>
+              <td class="py-3 px-3 text-right text-rose-600">-49 KH</td>
+              <td class="py-3 px-3 text-right font-bold bg-emerald-50/70 text-amber-800">-33 KH</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Hạ nhiệt rơi rụng</span></td>
             </tr>
           </tbody>
         </table>
@@ -576,7 +748,40 @@
 
     </div>
 
-    <!-- V. BẢN TIN ĐIỀU HÀNH 30 GIÂY -->
+    <!-- V. TRỌNG TÂM HÀNH ĐỘNG TUẦN 40 (TỪ GOOGLE DOCS MỚI NHẤT) -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h2 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>🎯</span> TRỌNG TÂM HÀNH ĐỘNG TUẦN 40 (MỤC II TRONG GOOGLE DOCS)
+        </h2>
+        <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-900 rounded-full border border-amber-200">Kế Hoạch Thực Thi Mới</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+          <h3 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span>📌</span> KPI Doanh Thu & Khách Hàng Tuần 40:
+          </h3>
+          <ul class="space-y-1.5 text-slate-700 leading-relaxed list-disc pl-4">
+            <li><strong>Tỷ lệ giữ chân KH (Retention Rate):</strong> Đưa đà rơi đơn từ -31 KH (T39) về mốc 0 hoặc tăng ròng KH (+).</li>
+            <li><strong>Khôi phục Nhóm A4:</strong> Kéo doanh thu Myphammuixu hồi phục từ 17.1 triệu lên &gt;35 triệu và kích hoạt lại ít nhất 1 đơn phát sinh từ Shop Trang Nguyễn.</li>
+            <li><strong>Duy trì Top 3:</strong> Đảm bảo tỷ lệ đạt SLA giao nhận của HKL, TTN, Cá Khô Nhà đạt &gt;98.5%.</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+          <h3 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span>🤝</span> Phân Công Phối Hợp Giữa Các Bộ Phận:
+          </h3>
+          <ul class="space-y-1.5 text-slate-700 leading-relaxed list-disc pl-4">
+            <li><strong>Vận hành (Operations):</strong> Chịu trách nhiệm hoàn toàn về SLA lấy/giao của Top 7 KH nhóm A, tuyệt đối không để xảy ra sự cố vỡ trận kho do lượng đơn tăng nóng.</li>
+            <li><strong>Kinh doanh (Sales / CSKH):</strong> Tập trung 80% thời lượng 2 ngày đầu tuần để xử lý triệt để 2 tài khoản A4 đang báo động đỏ (Trang Nguyễn & Myphammuixu).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- VI. BẢN TIN ĐIỀU HÀNH 30 GIÂY -->
     <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
@@ -596,97 +801,716 @@
 
   <script>
     const WEEK_DATA = {
-      W39: {
-        title: "Tuần 39 (Mới nhất vừa nhập)",
-        revenue: "401,020,089",
-        wow: "+1.7% ▲ (Bắt đầu chu kỳ tăng)",
-        wowColor: "text-emerald-600",
-        churnVal: "-31",
-        churnText: "Khách Rời Bỏ (-33 EF, +2 BCD)",
-        retention: "330.10% (Bật tăng vượt trội)",
-        alertTitle: "ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 39: TÍN HIỆU PHỤC HỒI RÕ NÉT – KHÁCH A BẬT TĂNG TRỞ LẠI & GIẢM TỐC RỜI BỎ EF",
-        alertBody: "• <strong>Sức mua Khách hàng A phục hồi mạnh mẽ:</strong> Đạt <strong>34.2 Tr</strong> (tăng <strong>+31.7% sv W-1</strong>), chấm dứt đà sụt giảm tuần 38.<br>• <strong>Nhóm BCD tăng trưởng dương:</strong> Ghi nhận <strong>+2 Khách hàng mới</strong> quay trở lại gửi hàng.<br>• <strong>Đà rời bỏ tệp EF chậm lại:</strong> Chỉ còn -33 KH rời bỏ (giảm mạnh so với mức -49 KH của tuần 38).<br>• <strong>Lũy kế 10 Khách hàng A bứt phá:</strong> Tổng MTD vọt lên <strong>3.155 tỷ VNĐ</strong>; Top 1 <strong>HKL</strong> vượt 808 Tr, Top 2 <strong>TTN</strong> chạm 593 Tr.",
-        alertBorder: "border-blue-600",
-        alertBg: "bg-blue-50",
-        alertText: "text-blue-950",
-        briefing: 
-`📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 39 – VÙNG HCM
---------------------------------------------------------------------------------------------------
-1. KẾT QUẢ KINH DOANH TUẦN 39:
-   • Doanh thu Giữ cũ Tuần 39: 401,020,089 ₫ (Tăng trưởng bật trở lại 330.10% sv W-1).
-   • Lũy kế MTD 10 Khách hàng A: Vọt lên 3,155,108,886 ₫ (+33.4% so với Tuần 38).
-   • Bán mới (KHM trong tháng): Đạt 350,535,910 ₫ với 12,495 đơn (+32% so với Tuần 38).
-
-2. TÍN HIỆU PHỤC HỒI TÍCH CỰC:
-   🟢 KHÁCH HÀNG A BẬT TĂNG TRỞ LẠI: Đạt 34.2 triệu (+31.7% sv Tuần 38), chấm dứt đà sụt giảm.
-   🟢 NHÓM BCD TĂNG TRƯỞNG RÒNG: Ghi nhận thêm +2 Khách hàng quay trở lại gửi hàng.
-   🟢 GIẢM TỐC RỜI BỎ TỆP EF: Số lượng khách mất giảm từ -49 KH xuống còn -33 KH.
-
-3. ĐIỂM SÁNG XUẤT SẮC:
-   • 2 AM CHÍNH THỨC VƯỢT TARGET THÁNG:
-     - Lê Trọng Tùng: Đạt 149.47% Target (440.9 triệu / Target 295 triệu).
-     - Trần Nguyễn Long Huy: Đạt 115.28% Target (328.6 triệu / Target 285 triệu).
-   • Bưu cục (HCM) Bình Tân 2 xác lập kỷ lục bán mới: Đạt 84.3 triệu KHM với 5,209 đơn.
-
-4. CẢNH BÁO TRỌNG TÂM CẦN BÁM SÁT:
-   🚨 Shop Trang Nguyễn (A4): Vẫn duy trì mức đáy (25.9k, trụ hạng 0.10%).
-   🟡 Myphammuixu (A4): Doanh thu MTD 17.1 triệu (trụ hạng 37.80%), cần đẩy mạnh chốt lại lịch gửi hàng.`
-      },
-      W38: {
-        title: "Tuần 38 (Tuần trước)",
-        revenue: "394,450,782",
-        wow: "-73.8% ▼ (Hạ nhiệt)",
-        wowColor: "text-rose-600",
-        churnVal: "-50",
-        churnText: "Khách Hàng Rời Bỏ (-49 EF, -1 BCD)",
-        retention: "270.60% (Giảm từ 304%)",
-        alertTitle: "CẢNH BÁO ĐIỀU HÀNH TUẦN 38: CHẢY MÁU TỆP EF VÀ NGUY CƠ MẤT KHÁCH HÀNG VIP",
-        alertBody: "• <strong>Thủng đáy nhóm A4:</strong> Shop Trang Nguyễn chỉ còn <strong>25.9k</strong> (trụ hạng 0.10%); Myphammuixu giảm 70% sản lượng (trụ hạng 37.80%).<br>• <strong>Mất 49 khách hàng EF:</strong> Đang diễn ra tình trạng chia tải mạnh sang đối thủ sau tuần cao điểm.<br>• <strong>Rủi ro tập trung cao:</strong> Top 3 Khách hàng A (HKL, TTN, Cá Khô Nhà) gánh 59% doanh thu toàn nhóm.",
-        alertBorder: "border-rose-600",
-        alertBg: "bg-rose-50",
-        alertText: "text-rose-900",
-        briefing: 
-`📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 38 – VÙNG HCM
+  "W39": {
+    "title": "Tuần 39 (Mới Nhất)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "401,020,089",
+    "wow": "+1.7% ▲ (Bắt đầu chu kỳ tăng)",
+    "wowColor": "text-emerald-600",
+    "churnVal": "-31",
+    "churnText": "Khách Rời Bỏ (-33 EF, +2 BCD)",
+    "retention": "330.10% (Bật tăng vượt trội)",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 39)",
+    "kpi3Val": "350,535,910",
+    "kpi3Sub": "12,495 đơn (+32% sv T38)",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD)",
+    "kpi4Val": "3,155,108,886",
+    "kpi4Sub": "+790.3 Tr ▲ (+33.4% sv T38)",
+    "alertTitle": "ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 39: TÍN HIỆU PHỤC HỒI RÕ NÉT – KHÁCH A BẬT TĂNG TRỞ LẠI & GIẢM TỐC RỜI BỎ EF",
+    "alertBody": "• <strong>Sức mua Khách hàng A phục hồi mạnh mẽ:</strong> Đạt <strong>34.2 Tr</strong> (tăng <strong>+31.7% sv W-1</strong>), chấm dứt đà sụt giảm tuần 38.<br>• <strong>Nhóm BCD tăng trưởng dương:</strong> Ghi nhận <strong>+2 Khách hàng mới</strong> quay trở lại gửi hàng.<br>• <strong>Đà rời bỏ tệp EF chậm lại:</strong> Chỉ còn -33 KH rời bỏ (giảm mạnh so với mức -49 KH của tuần 38).<br>• <strong>Lũy kế 10 Khách hàng A bứt phá:</strong> Tổng MTD vọt lên <strong>3.155 tỷ VNĐ</strong>; Top 1 <strong>HKL</strong> vượt 808 Tr, Top 2 <strong>TTN</strong> chạm 593 Tr.",
+    "alertBorder": "border-blue-600",
+    "alertBg": "bg-blue-50",
+    "alertText": "text-blue-950",
+    "sec11": {
+      "ltcSo": "5,584,792,001",
+      "target": "8,435,000,000",
+      "pct": "66.21%",
+      "pctClass": "bg-blue-100 border border-blue-200 text-blue-700",
+      "diff": "+1,409,089,262 ₫ ▲<br><span class=\"text-[10px] text-slate-500 font-normal\">(So với Tuần 38: 4.175 tỷ)</span>",
+      "gttc": "5,576,975,665",
+      "gttcDiff": "+1,433,442,314 ₫ ▲<br><span class=\"text-[10px] text-slate-500 font-normal\">(So với Tuần 38: 4.143 tỷ)</span>",
+      "giuCu": "4,261,846,760",
+      "giuCuSub": "Chiếm 76.3% tổng DT",
+      "giuCuNote": "Duy trì ổn định nền tảng giữ cũ",
+      "banMoi": "350,535,910",
+      "banMoiSub": "12,495 đơn KHM",
+      "banMoiDiff": "+88,459,863 ₫ ▲<br><span class=\"text-[10px] text-slate-500 font-normal\">(Tăng +33.8% sv mốc 262 Tr)</span>",
+      "progressWidth": "66.21%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 39 (MỚI NHẤT) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
-   • Doanh thu Giữ cũ Tuần 38: 394,450,782 ₫ (Giảm -73.8% sv Tuần 37: 1.507 tỷ).
-   • Tốc độ giữ doanh thu: 270.60% (giảm so với mức 304% của Tuần 37).
-   • Lũy kế MTD 10 Khách A: 2,364,788,432 ₫.
+   • Lũy kế Doanh thu LTC SO: 5,584,792,001 ₫ / Target: 8,435,000,000 ₫ (Đạt 66.21%).
+   • Tổng doanh thu GTTC: 5,576,975,665 ₫.
+   • Doanh thu Giữ cũ: 4,261,846,760 ₫.
+   • Doanh thu Bán mới (KHM): 350,535,910 ₫.
+   • Doanh thu Giữ cũ tuần: 401,020,089 ₫ (Tốc độ giữ DT: 330.10% (Bật tăng vượt trội)).
 
-2. CẢNH BÁO NGUY CƠ & ĐIỂM NGHẼN TRỌNG YẾU:
-   🚨 THỦNG ĐÁY PHÂN KHÚC A4: Shop Trang Nguyễn gần như đã mất (Doanh thu: 25.9k, trụ hạng 0.10%); Myphammuixu sụt 70% sản lượng.
-   ⚠️ TỆP EF BỊ CHIA TẢI: Mất 49 khách hàng trong tuần 38.
-
-3. ĐIỂM SÁNG: AM Lê Trọng Tùng về đích sớm đạt 113.31% Target tháng.`
-      },
-      W37: {
-        title: "Tuần 37 (Đầu tháng)",
-        revenue: "1,507,883,979",
-        wow: "+204% ▲ (Đỉnh cao điểm)",
-        wowColor: "text-emerald-600",
-        churnVal: "-32",
-        churnText: "Khách Hàng Rời Bỏ (-31 EF, -1 BCD)",
-        retention: "304.00% (Giữ doanh thu vượt trội)",
-        alertTitle: "ĐÁNH GIÁ VẬN HÀNH TUẦN 37: CAO ĐIỂM ĐẨY SỐ VÀ CẢNH BÁO SỚM TỆP EF",
-        alertBody: "• <strong>Quy mô bứt phá:</strong> Đạt đỉnh <strong>1.507 tỷ VNĐ</strong>, tăng trưởng giữ doanh thu đạt 304% nhờ đợt kích cầu sale đầu tháng.<br>• <strong>Dấu hiệu cảnh báo sớm:</strong> Tệp EF đã bắt đầu xuất hiện tình trạng rớt 31 khách hàng.",
-        alertBorder: "border-blue-600",
-        alertBg: "bg-blue-50",
-        alertText: "text-blue-900",
-        briefing: 
-`📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 37 – VÙNG HCM
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -31 KH.
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 39: TÍN HIỆU PHỤC HỒI RÕ NÉT – KHÁCH A BẬT TĂNG TRỞ LẠI & GIẢM TỐC RỜI BỎ EF."
+  },
+  "W38": {
+    "title": "Tuần 38 (Tuần trước)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "394,450,782",
+    "wow": "-73.8% ▼ (Hạ nhiệt)",
+    "wowColor": "text-rose-600",
+    "churnVal": "-50",
+    "churnText": "Khách Hàng Rời Bỏ (-49 EF, -1 BCD)",
+    "retention": "270.60% (Giảm từ 304%)",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 38)",
+    "kpi3Val": "262,076,047",
+    "kpi3Sub": "9,408 đơn KHM",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T38)",
+    "kpi4Val": "2,364,788,432",
+    "kpi4Sub": "Top 3 gánh 59% doanh thu",
+    "alertTitle": "CẢNH BÁO ĐIỀU HÀNH TUẦN 38: CHẢY MÁU TỆP EF VÀ NGUY CƠ MẤT KHÁCH HÀNG VIP",
+    "alertBody": "• <strong>Thủng đáy nhóm A4:</strong> Shop Trang Nguyễn chỉ còn <strong>25.9k</strong> (trụ hạng 0.10%); Myphammuixu giảm 70% sản lượng (trụ hạng 37.80%).<br>• <strong>Mất 49 khách hàng EF:</strong> Đang diễn ra tình trạng chia tải mạnh sang đối thủ sau tuần cao điểm.<br>• <strong>Rủi ro tập trung cao:</strong> Top 3 Khách hàng A (HKL, TTN, Cá Khô Nhà) gánh 59% doanh thu toàn nhóm.",
+    "alertBorder": "border-rose-600",
+    "alertBg": "bg-rose-50",
+    "alertText": "text-rose-900",
+    "sec11": {
+      "ltcSo": "4,175,702,739",
+      "target": "8,435,000,000",
+      "pct": "49.50%",
+      "pctClass": "bg-amber-100 border border-amber-200 text-amber-800",
+      "diff": "Mốc đối soát giữa tháng<br><span class=\"text-[10px] text-slate-500 font-normal\">(Báo cáo kết quả tháng 09)</span>",
+      "gttc": "4,143,533,351",
+      "gttcDiff": "Doanh thu GTTC lũy kế T38",
+      "giuCu": "4,261,846,760",
+      "giuCuSub": "Doanh thu giữ cũ tháng N",
+      "giuCuNote": "Tệp EF chiếm tỷ trọng >70%",
+      "banMoi": "262,076,047",
+      "banMoiSub": "9,408 đơn KHM",
+      "banMoiDiff": "Mốc bán mới lũy kế đến T38",
+      "progressWidth": "49.50%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 38 (TUẦN TRƯỚC) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
-   • Doanh thu Giữ cũ Tuần 37: 1,507,883,979 ₫ (Đỉnh cao điểm đẩy số đầu tháng).
-   • Tốc độ giữ doanh thu: 304.00% (Vượt trội trên toàn hệ thống).
-   • Nhóm EF đạt 1.035 tỷ (68.7%), BCD đạt 353.2 triệu (23.4%), A đạt 119.3 triệu (7.9%).`
-      }
-    };
+   • Lũy kế Doanh thu LTC SO: 4,175,702,739 ₫ / Target: 8,435,000,000 ₫ (Đạt 49.50%).
+   • Tổng doanh thu GTTC: 4,143,533,351 ₫.
+   • Doanh thu Giữ cũ: 4,261,846,760 ₫.
+   • Doanh thu Bán mới (KHM): 262,076,047 ₫.
+   • Doanh thu Giữ cũ tuần: 394,450,782 ₫ (Tốc độ giữ DT: 270.60% (Giảm từ 304%)).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -50 KH.
+   • Đánh giá: CẢNH BÁO ĐIỀU HÀNH TUẦN 38: CHẢY MÁU TỆP EF VÀ NGUY CƠ MẤT KHÁCH HÀNG VIP."
+  },
+  "W37": {
+    "title": "Tuần 37 (Giữa tháng 9)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "410,029,690",
+    "wow": "297.10% (Tốc độ giữ DT)",
+    "wowColor": "text-blue-600",
+    "churnVal": "-60",
+    "churnText": "Khách Rời Bỏ (-60 EF, 0 BCD, 0 A)",
+    "retention": "297.10% sv W-1",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 37)",
+    "kpi3Val": "111,211,192",
+    "kpi3Sub": "3,626 đơn KHM",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T37)",
+    "kpi4Val": "1,850,200,000",
+    "kpi4Sub": "Nhóm A giữ vững 98.7%",
+    "alertTitle": "ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 37: ĐẠT 32.48% TARGET THÁNG – CẢNH BÁO SỤT GIẢM 60 KHÁCH HÀNG TỆP EF",
+    "alertBody": "• <strong>Lũy kế Doanh thu LTC SO:</strong> Đạt <strong>2.74 tỷ VNĐ</strong>, hoàn thành 32.48% target 8.435 tỷ.<br>• <strong>Giữ cũ nhóm A & BCD giữ vững:</strong> Nhóm BCD giữ doanh thu 105.2%, nhóm A đạt 98.7%, biến động số lượng 0 KH.<br>• <strong>Cảnh báo sụt giảm tệp EF:</strong> Mất 60 khách hàng trong tuần, tỷ lệ giữ DT giảm xuống 93.20% (sụt 31.8 điểm %).",
+    "alertBorder": "border-amber-600",
+    "alertBg": "bg-amber-50",
+    "alertText": "text-amber-950",
+    "sec11": {
+      "ltcSo": "2,739,790,763",
+      "target": "8,435,000,000",
+      "pct": "32.48%",
+      "pctClass": "bg-slate-100 border border-slate-300 text-slate-800",
+      "diff": "Mốc lũy kế giữa tháng",
+      "gttc": "2,678,679,686",
+      "gttcDiff": "Doanh thu GTTC lũy kế T37",
+      "giuCu": "2,762,153,449",
+      "giuCuSub": "Doanh thu giữ cũ tháng N",
+      "giuCuNote": "Duy trì nền tảng giữ cũ",
+      "banMoi": "111,211,192",
+      "banMoiSub": "3,626 đơn KHM",
+      "banMoiDiff": "Bán mới lũy kế đến T37",
+      "progressWidth": "32.48%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 37 (GIỮA THÁNG 9) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 2,739,790,763 ₫ / Target: 8,435,000,000 ₫ (Đạt 32.48%).
+   • Tổng doanh thu GTTC: 2,678,679,686 ₫.
+   • Doanh thu Giữ cũ: 2,762,153,449 ₫.
+   • Doanh thu Bán mới (KHM): 111,211,192 ₫.
+   • Doanh thu Giữ cũ tuần: 410,029,690 ₫ (Tốc độ giữ DT: 297.10% sv W-1).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -60 KH.
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 37: ĐẠT 32.48% TARGET THÁNG – CẢNH BÁO SỤT GIẢM 60 KHÁCH HÀNG TỆP EF."
+  },
+  "W36": {
+    "title": "Tuần 36 (Đầu tháng 9)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "1,485,556,467",
+    "wow": "338.00% (Đỉnh tăng trưởng)",
+    "wowColor": "text-emerald-600",
+    "churnVal": "+300",
+    "churnText": "Khách Tăng Trưởng (+326 EF, -26 BCD)",
+    "retention": "338.00% sv W-1",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 36)",
+    "kpi3Val": "90,827,581",
+    "kpi3Sub": "Khởi đầu chiến dịch",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T36)",
+    "kpi4Val": "1,210,000,000",
+    "kpi4Sub": "Tuần đầu tháng 9",
+    "alertTitle": "ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 36: KHỞI ĐỘNG THÁNG 9 – BÙNG NỔ TĂNG TRƯỞNG TỆP EF (+326 KHÁCH HÀNG)",
+    "alertBody": "• <strong>Khởi động tháng 9:</strong> Doanh thu LTC SO đạt 1.288 tỷ (15.27% target).<br>• <strong>Bùng nổ giữ cũ tuần:</strong> Đạt đỉnh <strong>1.485 tỷ VNĐ</strong>, tăng trưởng 338% sv W-1.<br>• <strong>Tăng trưởng số lượng KH vượt bậc:</strong> Tăng ròng <strong>+300 KH</strong> nhờ chiến dịch kích cầu tệp EF (+326 KH).",
+    "alertBorder": "border-emerald-600",
+    "alertBg": "bg-emerald-50",
+    "alertText": "text-emerald-950",
+    "sec11": {
+      "ltcSo": "1,288,704,546",
+      "target": "8,435,000,000",
+      "pct": "15.27%",
+      "pctClass": "bg-slate-100 border border-slate-300 text-slate-800",
+      "diff": "Mốc tuần đầu Tháng 9",
+      "gttc": "90,827,581",
+      "gttcDiff": "Doanh thu GTTC tuần đầu",
+      "giuCu": "1,300,738,943",
+      "giuCuSub": "Doanh thu giữ cũ tháng N",
+      "giuCuNote": "Kích cầu đầu tháng",
+      "banMoi": "90,827,581",
+      "banMoiSub": "Bán mới tuần đầu",
+      "banMoiDiff": "Khởi đầu chiến dịch",
+      "progressWidth": "15.27%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 36 (ĐẦU THÁNG 9) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 1,288,704,546 ₫ / Target: 8,435,000,000 ₫ (Đạt 15.27%).
+   • Tổng doanh thu GTTC: 90,827,581 ₫.
+   • Doanh thu Giữ cũ: 1,300,738,943 ₫.
+   • Doanh thu Bán mới (KHM): 90,827,581 ₫.
+   • Doanh thu Giữ cũ tuần: 1,485,556,467 ₫ (Tốc độ giữ DT: 338.00% sv W-1).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +300 KH.
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 36: KHỞI ĐỘNG THÁNG 9 – BÙNG NỔ TĂNG TRƯỞNG TỆP EF (+326 KHÁCH HÀNG)."
+  },
+  "W35": {
+    "title": "Tuần 35 (Chuyển giao T8-T9)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "1,485,556,467",
+    "wow": "338.00%",
+    "wowColor": "text-emerald-600",
+    "churnVal": "+300",
+    "churnText": "Khách Tăng Trưởng",
+    "retention": "338.00%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 35)",
+    "kpi3Val": "90,827,581",
+    "kpi3Sub": "Chuyển giao tháng",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T35)",
+    "kpi4Val": "1,210,000,000",
+    "kpi4Sub": "Mốc chuyển giao",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 35: TUẦN BẢN LỀ CHUYỂN GIAO THÁNG",
+    "alertBody": "• Khởi động hệ thống chỉ tiêu tháng 09.<br>• Doanh thu giữ cũ đạt 1.300 tỷ, Bán mới đạt 90.8 triệu VNĐ.",
+    "alertBorder": "border-blue-600",
+    "alertBg": "bg-blue-50",
+    "alertText": "text-blue-950",
+    "sec11": {
+      "ltcSo": "1,288,704,546",
+      "target": "8,435,000,000",
+      "pct": "15.27%",
+      "pctClass": "bg-slate-100 border border-slate-300 text-slate-800",
+      "diff": "Tuần chuyển giao",
+      "gttc": "90,827,581",
+      "gttcDiff": "GTTC",
+      "giuCu": "1,300,738,943",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Chuẩn bị lực lượng",
+      "banMoi": "90,827,581",
+      "banMoiSub": "KHM",
+      "banMoiDiff": "Khởi động",
+      "progressWidth": "15.27%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 35 (CHUYỂN GIAO T8-T9) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 1,288,704,546 ₫ / Target: 8,435,000,000 ₫ (Đạt 15.27%).
+   • Tổng doanh thu GTTC: 90,827,581 ₫.
+   • Doanh thu Giữ cũ: 1,300,738,943 ₫.
+   • Doanh thu Bán mới (KHM): 90,827,581 ₫.
+   • Doanh thu Giữ cũ tuần: 1,485,556,467 ₫ (Tốc độ giữ DT: 338.00%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +300 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 35: TUẦN BẢN LỀ CHUYỂN GIAO THÁNG."
+  },
+  "W34": {
+    "title": "Tuần 34 (Cuối Tháng 8)",
+    "targetThang": "8,345,000,000 ₫",
+    "revenue": "420,150,000",
+    "wow": "278.40% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "-21",
+    "churnText": "Biến động KH Tuần 34",
+    "retention": "278.40%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 34)",
+    "kpi3Val": "208,972,659",
+    "kpi3Sub": "Bán mới Tháng 08",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T34)",
+    "kpi4Val": "2,850,000,000",
+    "kpi4Sub": "Đóng góp 55% DT",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 34: CHẠM MỐC 61.91% TARGET THÁNG 08",
+    "alertBody": "• <strong>Doanh thu LTC SO:</strong> Đạt 5.166 tỷ / Target 8.345 tỷ (61.91%).<br>• <strong>Doanh thu GTTC:</strong> Đạt 5.239 tỷ, Giữ cũ đạt 5.508 tỷ VNĐ.",
+    "alertBorder": "border-indigo-600",
+    "alertBg": "bg-indigo-50",
+    "alertText": "text-indigo-950",
+    "sec11": {
+      "ltcSo": "5,166,766,705",
+      "target": "8,345,000,000",
+      "pct": "61.91%",
+      "pctClass": "bg-indigo-100 border border-indigo-200 text-indigo-800",
+      "diff": "Lũy kế Tuần 34 Tháng 8",
+      "gttc": "5,239,549,452",
+      "gttcDiff": "GTTC Tháng 08",
+      "giuCu": "5,508,806,175",
+      "giuCuSub": "Giữ cũ Tháng 08",
+      "giuCuNote": "Vận hành ổn định",
+      "banMoi": "208,972,659",
+      "banMoiSub": "Bán mới Tháng 08",
+      "banMoiDiff": "Tích cực",
+      "progressWidth": "61.91%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 34 (CUỐI THÁNG 8) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 5,166,766,705 ₫ / Target: 8,345,000,000 ₫ (Đạt 61.91%).
+   • Tổng doanh thu GTTC: 5,239,549,452 ₫.
+   • Doanh thu Giữ cũ: 5,508,806,175 ₫.
+   • Doanh thu Bán mới (KHM): 208,972,659 ₫.
+   • Doanh thu Giữ cũ tuần: 420,150,000 ₫ (Tốc độ giữ DT: 278.40%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -21 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 34: CHẠM MỐC 61.91% TARGET THÁNG 08."
+  },
+  "W33": {
+    "title": "Tuần 33 (Giữa Tháng 8)",
+    "targetThang": "8,345,000,000 ₫",
+    "revenue": "395,600,000",
+    "wow": "265.20% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "-130",
+    "churnText": "Biến động KH Tuần 33",
+    "retention": "265.20%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 33)",
+    "kpi3Val": "153,170,417",
+    "kpi3Sub": "Tiến độ tốt",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T33)",
+    "kpi4Val": "2,100,000,000",
+    "kpi4Sub": "Tập trung giữ khách",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 33: ĐẠT 44.50% TARGET THÁNG 08",
+    "alertBody": "• Doanh thu LTC SO đạt 3.713 tỷ / Target 8.345 tỷ.<br>• Doanh thu GTTC đạt 3.781 tỷ, Giữ cũ đạt 3.985 tỷ VNĐ.",
+    "alertBorder": "border-blue-600",
+    "alertBg": "bg-blue-50",
+    "alertText": "text-blue-950",
+    "sec11": {
+      "ltcSo": "3,713,152,164",
+      "target": "8,345,000,000",
+      "pct": "44.50%",
+      "pctClass": "bg-blue-100 border border-blue-200 text-blue-800",
+      "diff": "Lũy kế Tuần 33 Tháng 8",
+      "gttc": "3,781,028,058",
+      "gttcDiff": "GTTC",
+      "giuCu": "3,985,008,078",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Tập trung giữ khách",
+      "banMoi": "153,170,417",
+      "banMoiSub": "Bán mới",
+      "banMoiDiff": "Tiến độ tốt",
+      "progressWidth": "44.50%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 33 (GIỮA THÁNG 8) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 3,713,152,164 ₫ / Target: 8,345,000,000 ₫ (Đạt 44.50%).
+   • Tổng doanh thu GTTC: 3,781,028,058 ₫.
+   • Doanh thu Giữ cũ: 3,985,008,078 ₫.
+   • Doanh thu Bán mới (KHM): 153,170,417 ₫.
+   • Doanh thu Giữ cũ tuần: 395,600,000 ₫ (Tốc độ giữ DT: 265.20%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -130 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 33: ĐẠT 44.50% TARGET THÁNG 08."
+  },
+  "W32": {
+    "title": "Tuần 32 (Đầu Tháng 8)",
+    "targetThang": "8,345,000,000 ₫",
+    "revenue": "380,200,000",
+    "wow": "250.00% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "+73",
+    "churnText": "Biến động KH Tuần 32",
+    "retention": "250.00%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 32)",
+    "kpi3Val": "93,049,287",
+    "kpi3Sub": "Đạt mốc đầu tháng",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T32)",
+    "kpi4Val": "1,450,000,000",
+    "kpi4Sub": "Khởi sắc",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 32: KHỞI ĐỘNG THÁNG 08 – ĐẠT 26.07%",
+    "alertBody": "• Doanh thu LTC SO đạt 2.175 tỷ / Target 8.345 tỷ (26.07%).<br>• Tăng ròng +73 khách hàng mới đầu tháng.",
+    "alertBorder": "border-emerald-600",
+    "alertBg": "bg-emerald-50",
+    "alertText": "text-emerald-950",
+    "sec11": {
+      "ltcSo": "2,175,611,576",
+      "target": "8,345,000,000",
+      "pct": "26.07%",
+      "pctClass": "bg-slate-100 border border-slate-300 text-slate-800",
+      "diff": "Lũy kế Tuần 32 Tháng 8",
+      "gttc": "2,223,328,229",
+      "gttcDiff": "GTTC",
+      "giuCu": "1,659,659,912",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Khởi sắc",
+      "banMoi": "93,049,287",
+      "banMoiSub": "Bán mới",
+      "banMoiDiff": "Đạt mốc",
+      "progressWidth": "26.07%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 32 (ĐẦU THÁNG 8) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 2,175,611,576 ₫ / Target: 8,345,000,000 ₫ (Đạt 26.07%).
+   • Tổng doanh thu GTTC: 2,223,328,229 ₫.
+   • Doanh thu Giữ cũ: 1,659,659,912 ₫.
+   • Doanh thu Bán mới (KHM): 93,049,287 ₫.
+   • Doanh thu Giữ cũ tuần: 380,200,000 ₫ (Tốc độ giữ DT: 250.00%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +73 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 32: KHỞI ĐỘNG THÁNG 08 – ĐẠT 26.07%."
+  },
+  "W31": {
+    "title": "Tuần 31 (Cuối Tháng 7)",
+    "targetThang": "8,336,000,000 ₫",
+    "revenue": "435,800,000",
+    "wow": "285.50% sv W-1",
+    "wowColor": "text-emerald-600",
+    "churnVal": "-176",
+    "churnText": "Biến động KH Tuần 31",
+    "retention": "285.50%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 31)",
+    "kpi3Val": "279,679,205",
+    "kpi3Sub": "Bùng nổ Tháng 07",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T31)",
+    "kpi4Val": "3,420,000,000",
+    "kpi4Sub": "Về đích xuất sắc",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 31: VỀ ĐÍCH THÁNG 07 – ĐẠT 89.30% TARGET",
+    "alertBody": "• <strong>Doanh thu LTC SO:</strong> Đạt 7.448 tỷ / Target 8.336 tỷ (89.30%).<br>• <strong>Doanh thu GTTC:</strong> Đạt 7.460 tỷ, Giữ cũ đạt 7.826 tỷ VNĐ.",
+    "alertBorder": "border-emerald-600",
+    "alertBg": "bg-emerald-50",
+    "alertText": "text-emerald-950",
+    "sec11": {
+      "ltcSo": "7,448,335,222",
+      "target": "8,336,000,000",
+      "pct": "89.30%",
+      "pctClass": "bg-emerald-100 border border-emerald-200 text-emerald-800",
+      "diff": "Về đích Tháng 07",
+      "gttc": "7,460,423,826",
+      "gttcDiff": "GTTC Tháng 07",
+      "giuCu": "7,826,198,708",
+      "giuCuSub": "Giữ cũ Tháng 07",
+      "giuCuNote": "Về đích xuất sắc",
+      "banMoi": "279,679,205",
+      "banMoiSub": "Bán mới Tháng 07",
+      "banMoiDiff": "Bùng nổ",
+      "progressWidth": "89.30%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 31 (CUỐI THÁNG 7) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 7,448,335,222 ₫ / Target: 8,336,000,000 ₫ (Đạt 89.30%).
+   • Tổng doanh thu GTTC: 7,460,423,826 ₫.
+   • Doanh thu Giữ cũ: 7,826,198,708 ₫.
+   • Doanh thu Bán mới (KHM): 279,679,205 ₫.
+   • Doanh thu Giữ cũ tuần: 435,800,000 ₫ (Tốc độ giữ DT: 285.50%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -176 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 31: VỀ ĐÍCH THÁNG 07 – ĐẠT 89.30% TARGET."
+  },
+  "W30": {
+    "title": "Tuần 30 (Giữa Tháng 7)",
+    "targetThang": "8,336,000,000 ₫",
+    "revenue": "415,200,000",
+    "wow": "270.00% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "+86",
+    "churnText": "Biến động KH Tuần 30",
+    "retention": "270.00%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 30)",
+    "kpi3Val": "230,762,885",
+    "kpi3Sub": "Đạt mốc tăng tốc",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T30)",
+    "kpi4Val": "2,750,000,000",
+    "kpi4Sub": "Tăng tốc giữ khách",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 30: ĐẠT 72.68% TARGET THÁNG 07",
+    "alertBody": "• Doanh thu LTC SO đạt 6.058 tỷ / Target 8.336 tỷ (72.68%).<br>• Doanh thu GTTC đạt 6.256 tỷ, Bán mới đạt 230.7 triệu VNĐ.",
+    "alertBorder": "border-blue-600",
+    "alertBg": "bg-blue-50",
+    "alertText": "text-blue-950",
+    "sec11": {
+      "ltcSo": "6,058,709,425",
+      "target": "8,336,000,000",
+      "pct": "72.68%",
+      "pctClass": "bg-blue-100 border border-blue-200 text-blue-800",
+      "diff": "Lũy kế Tuần 30 Tháng 7",
+      "gttc": "6,256,537,516",
+      "gttcDiff": "GTTC",
+      "giuCu": "1,778,633,354",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Tăng tốc",
+      "banMoi": "230,762,885",
+      "banMoiSub": "Bán mới",
+      "banMoiDiff": "Đạt mốc",
+      "progressWidth": "72.68%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 30 (GIỮA THÁNG 7) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 6,058,709,425 ₫ / Target: 8,336,000,000 ₫ (Đạt 72.68%).
+   • Tổng doanh thu GTTC: 6,256,537,516 ₫.
+   • Doanh thu Giữ cũ: 1,778,633,354 ₫.
+   • Doanh thu Bán mới (KHM): 230,762,885 ₫.
+   • Doanh thu Giữ cũ tuần: 415,200,000 ₫ (Tốc độ giữ DT: 270.00%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +86 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 30: ĐẠT 72.68% TARGET THÁNG 07."
+  },
+  "W29": {
+    "title": "Tuần 29 (Tháng 7)",
+    "targetThang": "8,336,000,000 ₫",
+    "revenue": "390,000,000",
+    "wow": "255.00% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "-45",
+    "churnText": "Biến động KH Tuần 29",
+    "retention": "255.00%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 29)",
+    "kpi3Val": "162,631,308",
+    "kpi3Sub": "Tiến độ đều",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T29)",
+    "kpi4Val": "1,950,000,000",
+    "kpi4Sub": "Ổn định",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 29: ĐẠT 54.70% TARGET THÁNG 07",
+    "alertBody": "• Doanh thu LTC SO đạt 4.409 tỷ / Target 8.336 tỷ (54.70%).<br>• Doanh thu GTTC đạt 4.356 tỷ, Bán mới đạt 162.6 triệu VNĐ.",
+    "alertBorder": "border-blue-600",
+    "alertBg": "bg-blue-50",
+    "alertText": "text-blue-950",
+    "sec11": {
+      "ltcSo": "4,409,510,546",
+      "target": "8,336,000,000",
+      "pct": "54.70%",
+      "pctClass": "bg-blue-100 border border-blue-200 text-blue-800",
+      "diff": "Lũy kế Tuần 29 Tháng 7",
+      "gttc": "4,356,756,609",
+      "gttcDiff": "GTTC",
+      "giuCu": "1,812,118,639",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Ổn định",
+      "banMoi": "162,631,308",
+      "banMoiSub": "Bán mới",
+      "banMoiDiff": "Tiến độ",
+      "progressWidth": "54.70%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 29 (THÁNG 7) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 4,409,510,546 ₫ / Target: 8,336,000,000 ₫ (Đạt 54.70%).
+   • Tổng doanh thu GTTC: 4,356,756,609 ₫.
+   • Doanh thu Giữ cũ: 1,812,118,639 ₫.
+   • Doanh thu Bán mới (KHM): 162,631,308 ₫.
+   • Doanh thu Giữ cũ tuần: 390,000,000 ₫ (Tốc độ giữ DT: 255.00%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: -45 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 29: ĐẠT 54.70% TARGET THÁNG 07."
+  },
+  "W28": {
+    "title": "Tuần 28 (Đầu Tháng 7)",
+    "targetThang": "8,336,000,000 ₫",
+    "revenue": "365,000,000",
+    "wow": "240.00% sv W-1",
+    "wowColor": "text-blue-600",
+    "churnVal": "+129",
+    "churnText": "Biến động KH Tuần 28",
+    "retention": "240.00%",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 28)",
+    "kpi3Val": "100,044,940",
+    "kpi3Sub": "Khởi đầu chiến dịch",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD T28)",
+    "kpi4Val": "1,200,000,000",
+    "kpi4Sub": "Khởi sắc",
+    "alertTitle": "ĐIỀU HÀNH TUẦN 28: KHỞI ĐỘNG THÁNG 07 – ĐẠT 32.00%",
+    "alertBody": "• Doanh thu LTC SO đạt 2.659 tỷ / Target 8.336 tỷ (32.00%).<br>• Doanh thu GTTC đạt 2.621 tỷ, Bán mới đạt 100.0 triệu VNĐ.<br>• Tăng ròng +129 khách hàng mới.",
+    "alertBorder": "border-emerald-600",
+    "alertBg": "bg-emerald-50",
+    "alertText": "text-emerald-950",
+    "sec11": {
+      "ltcSo": "2,659,605,183",
+      "target": "8,336,000,000",
+      "pct": "32.00%",
+      "pctClass": "bg-slate-100 border border-slate-300 text-slate-800",
+      "diff": "Lũy kế Tuần 28 Tháng 7",
+      "gttc": "2,621,685,173",
+      "gttcDiff": "GTTC",
+      "giuCu": "1,735,000,163",
+      "giuCuSub": "Giữ cũ",
+      "giuCuNote": "Khởi sắc",
+      "banMoi": "100,044,940",
+      "banMoiSub": "Bán mới",
+      "banMoiDiff": "Khởi đầu",
+      "progressWidth": "32.00%"
+    },
+    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 28 (ĐẦU THÁNG 7) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 2,659,605,183 ₫ / Target: 8,336,000,000 ₫ (Đạt 32.00%).
+   • Tổng doanh thu GTTC: 2,621,685,173 ₫.
+   • Doanh thu Giữ cũ: 1,735,000,163 ₫.
+   • Doanh thu Bán mới (KHM): 100,044,940 ₫.
+   • Doanh thu Giữ cũ tuần: 365,000,000 ₫ (Tốc độ giữ DT: 240.00%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +129 KH.
+   • Đánh giá: ĐIỀU HÀNH TUẦN 28: KHỞI ĐỘNG THÁNG 07 – ĐẠT 32.00%."
+  }
+};
 
     function switchWeek(weekKey) {
       const data = WEEK_DATA[weekKey];
+      if (!data) return;
+
+      // 1. Đồng bộ dropdown chọn tuần
+      const select = document.getElementById("weekSelect");
+      if (select && select.value !== weekKey) {
+        select.value = weekKey;
+      }
+
+      // 2. Đồng bộ Target tháng tương ứng
+      const headerTarget = document.getElementById("headerTargetVal");
+      if (headerTarget && data.targetThang) {
+        headerTarget.textContent = data.targetThang;
+      }
+
+      // 3. Đồng bộ Khung Banner Trạng thái Đồng bộ (Header Sync Confirmation)
+      const syncTitle = document.getElementById("syncStatusTitle");
+      if (syncTitle) {
+        syncTitle.textContent = `🎉 ĐÃ ĐỒNG BỘ DỮ LIỆU ${data.title.toUpperCase()} TỪ GOOGLE DOCS & GOOGLE SHEETS!`;
+      }
+      const syncDesc = document.getElementById("syncStatusDesc");
+      if (syncDesc && data.sec11) {
+        syncDesc.innerHTML = `• <strong>Số liệu ${data.title}:</strong> Doanh thu LTC SO đạt <strong>${data.sec11.ltcSo} ₫</strong> (${data.sec11.pct} Target) | Tổng GTTC: <strong>${data.sec11.gttc} ₫</strong> | Bán mới: <strong>${data.sec11.banMoi} ₫</strong> | Giữ cũ: <strong>${data.revenue} ₫</strong>`;
+      }
+
+      // 4. Đồng bộ 4 Thẻ Chỉ Số KPI Scorecards
+      // Thẻ 1: Doanh thu giữ cũ
+      const kpi1Title = document.getElementById("kpi1Title");
+      if (kpi1Title) kpi1Title.textContent = "DOANH THU GIỮ CŨ " + data.title.toUpperCase();
+      const kpi1Val = document.getElementById("kpi1Val");
+      if (kpi1Val) kpi1Val.textContent = data.revenue;
+      const kpi1WoW = document.getElementById("kpi1WoW");
+      if (kpi1WoW) {
+        kpi1WoW.textContent = data.wow;
+        kpi1WoW.className = "font-bold " + data.wowColor;
+      }
+
+      // Thẻ 2: Biến động khách hàng
+      const kpi2Val = document.getElementById("kpi2Val");
+      if (kpi2Val) kpi2Val.textContent = data.churnVal;
+      const kpi2Sub = document.getElementById("kpi2Sub");
+      if (kpi2Sub) kpi2Sub.textContent = data.retention;
+
+      // Thẻ 3: Bán mới KHM
+      const kpi3Title = document.getElementById("kpi3Title");
+      if (kpi3Title) kpi3Title.textContent = data.kpi3Title || ("BÁN MỚI (KHM " + data.title.toUpperCase() + ")");
+      const kpi3Val = document.getElementById("kpi3Val");
+      if (kpi3Val) kpi3Val.textContent = data.kpi3Val || (data.sec11 ? data.sec11.banMoi : "—");
+      const kpi3Sub = document.getElementById("kpi3Sub");
+      if (kpi3Sub) kpi3Sub.textContent = data.kpi3Sub || "Doanh thu bán mới KHM";
+
+      // Thẻ 4: Doanh thu Khách A
+      const kpi4Title = document.getElementById("kpi4Title");
+      if (kpi4Title) kpi4Title.textContent = data.kpi4Title || ("DOANH THU KHÁCH A (MTD " + data.title.toUpperCase() + ")");
+      const kpi4Val = document.getElementById("kpi4Val");
+      if (kpi4Val) kpi4Val.textContent = data.kpi4Val || "3,155,108,886";
+      const kpi4Sub = document.getElementById("kpi4Sub");
+      if (kpi4Sub) kpi4Sub.textContent = data.kpi4Sub || "Khách hàng nhóm VIP A";
+
+      // 5. Đồng bộ Banner Cảnh báo Điều Hành
+      const banner = document.getElementById("alertBanner");
+      if (banner) banner.className = data.alertBg + " border-l-4 " + data.alertBorder + " rounded-xl p-4 shadow-sm space-y-1";
+      const alertTitle = document.getElementById("alertTitle");
+      if (alertTitle) {
+        alertTitle.className = "text-xs md:text-sm font-bold " + data.alertText;
+        alertTitle.textContent = data.alertTitle;
+      }
+      const alertBody = document.getElementById("alertBody");
+      if (alertBody) alertBody.innerHTML = data.alertBody;
+
+      // 6. Đồng bộ Bản Tin Điều Hành 30 Giây Gửi Giám Đốc Vùng
+      const briefTitle = document.getElementById("briefingTitle");
+      if (briefTitle) briefTitle.textContent = `Bản Tin Điều Hành 30 Giây Gửi Giám Đốc Vùng (${data.title})`;
+      const briefContent = document.getElementById("briefingContent");
+      if (briefContent) briefContent.textContent = data.briefing;
+
+      // 7. Đồng bộ Toàn Bộ Bảng Mục 1.1 Tổng Quan Mức Độ Hoàn Thành Kế Hoạch
+      if (data.sec11) {
+        const ltcSoEl = document.getElementById("sec11LtcSo");
+        if (ltcSoEl) ltcSoEl.textContent = data.sec11.ltcSo;
+        const targetEl = document.getElementById("sec11Target");
+        if (targetEl) targetEl.textContent = data.sec11.target;
+        const pctEl = document.getElementById("sec11Pct");
+        if (pctEl) {
+          pctEl.textContent = data.sec11.pct;
+          pctEl.className = "py-3.5 px-4 text-center font-bold text-sm " + (data.sec11.pctClass || "text-blue-700");
+        }
+
+        const diffEl = document.getElementById("sec11Diff");
+        if (diffEl) diffEl.innerHTML = data.sec11.diff;
+        const gttcEl = document.getElementById("sec11Gttc");
+        if (gttcEl) gttcEl.textContent = data.sec11.gttc;
+        const gttcDiffEl = document.getElementById("sec11GttcDiff");
+        if (gttcDiffEl) gttcDiffEl.innerHTML = data.sec11.gttcDiff;
+        const giuCuEl = document.getElementById("sec11GiuCu");
+        if (giuCuEl) giuCuEl.textContent = data.sec11.giuCu;
+        const giuCuSubEl = document.getElementById("sec11GiuCuSub");
+        if (giuCuSubEl) giuCuSubEl.textContent = data.sec11.giuCuSub;
+        const giuCuNoteEl = document.getElementById("sec11GiuCuNote");
+        if (giuCuNoteEl) giuCuNoteEl.textContent = data.sec11.giuCuNote;
+        const banMoiEl = document.getElementById("sec11BanMoi");
+        if (banMoiEl) banMoiEl.textContent = data.sec11.banMoi;
+        const banMoiSubEl = document.getElementById("sec11BanMoiSub");
+        if (banMoiSubEl) banMoiSubEl.textContent = data.sec11.banMoiSub;
+        const banMoiDiffEl = document.getElementById("sec11BanMoiDiff");
+        if (banMoiDiffEl) banMoiDiffEl.innerHTML = data.sec11.banMoiDiff;
+
+        // Thanh tiến độ trực quan
+        const badge = document.getElementById("sec11BadgeProgress");
+        if (badge) badge.textContent = `${data.sec11.pct} / ${data.targetThang || '8.435 Tỷ ₫'}`;
+        const bar = document.getElementById("sec11ProgressBar");
+        if (bar) bar.style.width = data.sec11.progressWidth || "0%";
+        const barText = document.getElementById("sec11ProgressBarText");
+        if (barText) barText.textContent = data.sec11.pct;
+      }
+    } {
+      const data = WEEK_DATA[weekKey];
       
-      // Update buttons
-      ["W39", "W38", "W37"].forEach(w => {
+      ["W39", "W38", "W37", "W36"].forEach(w => {
         const btn = document.getElementById("btn" + w);
         if (w === weekKey) {
           btn.className = "px-3.5 py-1.5 text-xs rounded-lg font-semibold transition week-active flex items-center gap-1.5";
@@ -695,27 +1519,44 @@
         }
       });
 
-      // Update Card 1
-      document.getElementById("kpi1Title").textContent = "DOANH THU GIỮ CŨ " + (weekKey === "W39" ? "TUẦN 39" : (weekKey === "W38" ? "TUẦN 38" : "TUẦN 37"));
+      document.getElementById("kpi1Title").textContent = "DOANH THU GIỮ CŨ " + (weekKey === "W39" ? "TUẦN 39" : (weekKey === "W38" ? "TUẦN 38" : (weekKey === "W37" ? "TUẦN 37" : "TUẦN 36")));
       document.getElementById("kpi1Val").textContent = data.revenue;
       const kpi1WoW = document.getElementById("kpi1WoW");
       kpi1WoW.textContent = data.wow;
       kpi1WoW.className = "font-bold " + data.wowColor;
 
-      // Update Card 2
       document.getElementById("kpi2Val").textContent = data.churnVal;
       document.getElementById("kpi2Sub").textContent = data.retention;
 
-      // Update Alert Banner
       const banner = document.getElementById("alertBanner");
       banner.className = data.alertBg + " border-l-4 " + data.alertBorder + " rounded-xl p-4 shadow-sm space-y-1";
       document.getElementById("alertTitle").className = "text-xs md:text-sm font-bold " + data.alertText;
       document.getElementById("alertTitle").textContent = data.alertTitle;
       document.getElementById("alertBody").innerHTML = data.alertBody;
 
-      // Update Briefing
       document.getElementById("briefingTitle").textContent = `Bản Tin Điều Hành 30 Giây Gửi Giám Đốc Vùng (${weekKey === 'W39' ? 'Tuần 39 - Mới Nhất' : (weekKey === 'W38' ? 'Tuần 38' : 'Tuần 37')})`;
       document.getElementById("briefingContent").textContent = data.briefing;
+
+      // Cập nhật động toàn bộ Bảng Mục 1.1 Tổng quan Kế hoạch Tháng 09 theo đúng số liệu từng tuần
+      if (data.sec11) {
+        document.getElementById("sec11LtcSo").textContent = data.sec11.ltcSo;
+        document.getElementById("sec11Target").textContent = data.sec11.target;
+        document.getElementById("sec11Pct").innerHTML = `<span class="px-2.5 py-1 rounded-full ${data.sec11.pctClass}">${data.sec11.pct}</span>`;
+        document.getElementById("sec11Diff").innerHTML = data.sec11.diff;
+        document.getElementById("sec11Gttc").textContent = data.sec11.gttc;
+        document.getElementById("sec11GttcDiff").innerHTML = data.sec11.gttcDiff;
+        document.getElementById("sec11GiuCu").textContent = data.sec11.giuCu;
+        document.getElementById("sec11GiuCuSub").textContent = data.sec11.giuCuSub;
+        document.getElementById("sec11GiuCuNote").textContent = data.sec11.giuCuNote;
+        document.getElementById("sec11BanMoi").textContent = data.sec11.banMoi;
+        document.getElementById("sec11BanMoiSub").textContent = data.sec11.banMoiSub;
+        document.getElementById("sec11BanMoiDiff").innerHTML = data.sec11.banMoiDiff;
+        
+        document.getElementById("sec11ProgressBarText").textContent = data.sec11.pct;
+        document.getElementById("sec11BadgeProgress").textContent = `${data.sec11.pct} / 8.435 Tỷ ₫`;
+        document.getElementById("sec11ProgressBarFill").style.width = data.sec11.progressWidth;
+      }
+
     }
 
     function copyBriefing() {
@@ -727,7 +1568,6 @@
       });
     }
 
-    // Default init Tuần 39
     switchWeek("W39");
   </script>
 </body>
