@@ -40,8 +40,11 @@
           
           <div class="relative">
             <select id="weekSelect" onchange="switchWeek(this.value)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg pl-3 pr-8 py-1.5 border-0 focus:ring-2 focus:ring-blue-300 outline-none cursor-pointer transition appearance-none shadow-sm">
-              <optgroup label="── Tháng 09/2026 (Hiện tại) ──" class="bg-slate-800 text-white font-bold">
-                <option value="W39" selected>Tuần 39 (Mới Nhất) • 66.21%</option>
+
+            <option value="W40" selected>Tuần 40 (Mới Nhất - T10)</option>
+            <option value="W39">Tuần 39</option>
+            <optgroup label="── Tháng 09/2026 (Hiện tại) ──" class="bg-slate-800 text-white font-bold">
+                
                 <option value="W38">Tuần 38 • 49.50%</option>
                 <option value="W37">Tuần 37 • 32.48%</option>
                 <option value="W36">Tuần 36 • 15.27%</option>
@@ -58,7 +61,7 @@
                 <option value="W29">Tuần 29 • 54.70%</option>
                 <option value="W28">Tuần 28 • 32.00%</option>
               </optgroup>
-            </select>
+          </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
@@ -800,7 +803,66 @@
   </div>
 
   <script>
+
     const WEEK_DATA = {
+  "W40": {
+    "title": "Tuần 40 (Mới Nhất)",
+    "targetThang": "8,435,000,000 ₫",
+    "revenue": "398,847,707",
+    "wow": "-72.9% ▼ (Sụt giảm đầu chu kỳ tháng 10)",
+    "wowColor": "text-rose-600",
+    "churnVal": "+20",
+    "churnText": "Khách Hàng Tăng Ròng (+27 EF, -7 BCD, 0 A)",
+    "retention": "281.50% (Tốc độ giữ DT)",
+    "kpi3Title": "BÁN MỚI (KHM TUẦN 40)",
+    "kpi3Val": "53,120,071",
+    "kpi3Sub": "1,628 đơn KHM | GTTC 59 Tr ₫",
+    "kpi4Title": "DOANH THU KHÁCH A (MTD TUẦN 40)",
+    "kpi4Val": "2,172,154,968",
+    "kpi4Sub": "Top 10 Khách VIP | HKL & TTN gánh 47%",
+    "alertTitle": "CẢNH BÁO ĐIỀU HÀNH TUẦN 40: ĐIỂM NÓNG DẦU GỘI PHỦ BẠC LAO DỐC & DỒN LỰC MEGA 10/10",
+    "alertBody": "• <strong>Điểm nóng rủi ro (Báo động đỏ):</strong> Khách hàng DẦU GỘI PHỦ BẠC - BHT HCM (A3) giảm sâu còn <strong>39.5 Tr</strong> (chỉ đạt <strong>32.8% sv M-1</strong>, mất 67% doanh thu). Account cần trực tiếp làm việc chặn đà rớt.<br>• <strong>Bùng nổ nhóm A đón Mega:</strong> HKL vọt <strong>584.5 Tr (+821%)</strong>, TTN đạt <strong>435.9 Tr (+813%)</strong>, Ngon Ngon Sơn Trang đạt <strong>256.7 Tr (+755%)</strong>.<br>• <strong>Khách hàng tăng ròng:</strong> Toàn vùng <strong>+20 KH</strong> (Nhóm EF tăng <strong>+27 KH</strong>, BCD -7 KH).<br>• <strong>Vận hành sẵn sàng Mega 10/10:</strong> Dồn lực 11/10 & 13/10 (đỉnh 128k đơn/ngày HCM), xả tải sớm BDU (41.3k đơn), giữ định biên BVT (19.5k đơn).",
+    "alertBorder": "border-amber-500",
+    "alertBg": "bg-amber-50",
+    "alertText": "text-amber-950",
+    "sec11": {
+      "ltcSo": "915,062,625",
+      "target": "8,435,000,000",
+      "pct": "10.85%",
+      "pctClass": "bg-amber-100 border border-amber-300 text-amber-800",
+      "diff": "Đầu chu kỳ Tháng 10<br><span class=\"text-[10px] text-slate-500 font-normal\">(Báo cáo kết quả tháng 10)</span>",
+      "gttc": "182,238,929",
+      "gttcDiff": "Doanh thu GTTC lũy kế T40",
+      "giuCu": "1,058,483,395",
+      "giuCuSub": "Doanh thu giữ cũ tháng 10",
+      "giuCuNote": "Nền tảng giữ cũ đầu tháng",
+      "banMoi": "53,120,071",
+      "banMoiSub": "1,628 đơn KHM",
+      "banMoiDiff": "+59 Tr GTTC KHM",
+      "progressWidth": "10.85%"
+    },
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 40 (MỚI NHẤT) – VÙNG HCM
+--------------------------------------------------------------------------------------------------
+1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
+   • Lũy kế Doanh thu LTC SO: 915,062,625 ₫ / Target: 8,435,000,000 ₫ (Đạt 10.85% - Báo cáo kết quả tháng 10).
+   • Tổng doanh thu GTTC: 182,238,929 ₫.
+   • Doanh thu Giữ cũ: 1,058,483,395 ₫.
+   • Doanh thu Bán mới (KHM): 53,120,071 ₫ (Sản lượng 1,628 đơn | GTTC 59,038,222 ₫).
+   • Doanh thu Giữ cũ tuần (Vol/Rev N-1): 398,847,707 ₫ (Tốc độ giữ DT: 281.50%).
+
+2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
+   • Biến động Khách hàng: +20 KH ròng (+27 EF, -7 BCD, 0 A).
+   • Tỷ lệ thực hiện nhóm BCD (105.90%) và EF (103.00%) tiếp tục duy trì đà vượt kế hoạch.
+
+3. ĐIỂM NÓNG KHÁCH HÀNG A & CAN THIỆP:
+   • Tổng doanh thu MTD Khách A: 2,172,154,968 ₫.
+   • Hai trụ cột gánh 47% doanh thu nhóm A: HKL (584,517,816 ₫, +821.2%) & TTN (435,863,772 ₫, +813.2%).
+   • 🔴 BÁO ĐỘNG ĐỎ: DẦU GỘI PHỦ BẠC - BHT HCM (A3) chỉ đạt 39,483,416 ₫ (32.8% sv M-1, lao dốc 67%). Account phụ trách cần trực tiếp làm việc chặn đà rớt.
+
+4. TRỌNG TÂM ĐIỀU HÀNH MEGA 10/10 (11/10 – 13/10):
+   • Vận hành: Dồn lực 11/10 & 13/10 (đỉnh 128k đơn/ngày HCM), xả tải sớm BDU (41.3k đơn), giữ định biên BVT (19.5k đơn).
+   • Kinh doanh: Cứu tài khoản Dầu Gội Phủ Bạc, bảo vệ dịch vụ & xe gom riêng cho Top shop bùng nổ HKL và TTN.`
+  },
   "W39": {
     "title": "Tuần 39 (Mới Nhất)",
     "targetThang": "8,435,000,000 ₫",
@@ -837,7 +899,7 @@
       "banMoiDiff": "+88,459,863 ₫ ▲<br><span class=\"text-[10px] text-slate-500 font-normal\">(Tăng +33.8% sv mốc 262 Tr)</span>",
       "progressWidth": "66.21%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 39 (MỚI NHẤT) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 39 (MỚI NHẤT) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 5,584,792,001 ₫ / Target: 8,435,000,000 ₫ (Đạt 66.21%).
@@ -848,7 +910,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -31 KH.
-   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 39: TÍN HIỆU PHỤC HỒI RÕ NÉT – KHÁCH A BẬT TĂNG TRỞ LẠI & GIẢM TỐC RỜI BỎ EF."
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 39: TÍN HIỆU PHỤC HỒI RÕ NÉT – KHÁCH A BẬT TĂNG TRỞ LẠI & GIẢM TỐC RỜI BỎ EF.`
   },
   "W38": {
     "title": "Tuần 38 (Tuần trước)",
@@ -886,7 +948,7 @@
       "banMoiDiff": "Mốc bán mới lũy kế đến T38",
       "progressWidth": "49.50%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 38 (TUẦN TRƯỚC) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 38 (TUẦN TRƯỚC) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 4,175,702,739 ₫ / Target: 8,435,000,000 ₫ (Đạt 49.50%).
@@ -897,7 +959,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -50 KH.
-   • Đánh giá: CẢNH BÁO ĐIỀU HÀNH TUẦN 38: CHẢY MÁU TỆP EF VÀ NGUY CƠ MẤT KHÁCH HÀNG VIP."
+   • Đánh giá: CẢNH BÁO ĐIỀU HÀNH TUẦN 38: CHẢY MÁU TỆP EF VÀ NGUY CƠ MẤT KHÁCH HÀNG VIP.`
   },
   "W37": {
     "title": "Tuần 37 (Giữa tháng 9)",
@@ -935,7 +997,7 @@
       "banMoiDiff": "Bán mới lũy kế đến T37",
       "progressWidth": "32.48%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 37 (GIỮA THÁNG 9) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 37 (GIỮA THÁNG 9) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 2,739,790,763 ₫ / Target: 8,435,000,000 ₫ (Đạt 32.48%).
@@ -946,7 +1008,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -60 KH.
-   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 37: ĐẠT 32.48% TARGET THÁNG – CẢNH BÁO SỤT GIẢM 60 KHÁCH HÀNG TỆP EF."
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 37: ĐẠT 32.48% TARGET THÁNG – CẢNH BÁO SỤT GIẢM 60 KHÁCH HÀNG TỆP EF.`
   },
   "W36": {
     "title": "Tuần 36 (Đầu tháng 9)",
@@ -984,7 +1046,7 @@
       "banMoiDiff": "Khởi đầu chiến dịch",
       "progressWidth": "15.27%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 36 (ĐẦU THÁNG 9) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 36 (ĐẦU THÁNG 9) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 1,288,704,546 ₫ / Target: 8,435,000,000 ₫ (Đạt 15.27%).
@@ -995,7 +1057,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: +300 KH.
-   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 36: KHỞI ĐỘNG THÁNG 9 – BÙNG NỔ TĂNG TRƯỞNG TỆP EF (+326 KHÁCH HÀNG)."
+   • Đánh giá: ĐÁNH GIÁ ĐIỀU HÀNH TUẦN 36: KHỞI ĐỘNG THÁNG 9 – BÙNG NỔ TĂNG TRƯỞNG TỆP EF (+326 KHÁCH HÀNG).`
   },
   "W35": {
     "title": "Tuần 35 (Chuyển giao T8-T9)",
@@ -1033,7 +1095,7 @@
       "banMoiDiff": "Khởi động",
       "progressWidth": "15.27%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 35 (CHUYỂN GIAO T8-T9) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 35 (CHUYỂN GIAO T8-T9) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 1,288,704,546 ₫ / Target: 8,435,000,000 ₫ (Đạt 15.27%).
@@ -1044,7 +1106,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: +300 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 35: TUẦN BẢN LỀ CHUYỂN GIAO THÁNG."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 35: TUẦN BẢN LỀ CHUYỂN GIAO THÁNG.`
   },
   "W34": {
     "title": "Tuần 34 (Cuối Tháng 8)",
@@ -1082,7 +1144,7 @@
       "banMoiDiff": "Tích cực",
       "progressWidth": "61.91%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 34 (CUỐI THÁNG 8) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 34 (CUỐI THÁNG 8) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 5,166,766,705 ₫ / Target: 8,345,000,000 ₫ (Đạt 61.91%).
@@ -1093,7 +1155,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -21 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 34: CHẠM MỐC 61.91% TARGET THÁNG 08."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 34: CHẠM MỐC 61.91% TARGET THÁNG 08.`
   },
   "W33": {
     "title": "Tuần 33 (Giữa Tháng 8)",
@@ -1131,7 +1193,7 @@
       "banMoiDiff": "Tiến độ tốt",
       "progressWidth": "44.50%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 33 (GIỮA THÁNG 8) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 33 (GIỮA THÁNG 8) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 3,713,152,164 ₫ / Target: 8,345,000,000 ₫ (Đạt 44.50%).
@@ -1142,7 +1204,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -130 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 33: ĐẠT 44.50% TARGET THÁNG 08."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 33: ĐẠT 44.50% TARGET THÁNG 08.`
   },
   "W32": {
     "title": "Tuần 32 (Đầu Tháng 8)",
@@ -1180,7 +1242,7 @@
       "banMoiDiff": "Đạt mốc",
       "progressWidth": "26.07%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 32 (ĐẦU THÁNG 8) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 32 (ĐẦU THÁNG 8) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 2,175,611,576 ₫ / Target: 8,345,000,000 ₫ (Đạt 26.07%).
@@ -1191,7 +1253,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: +73 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 32: KHỞI ĐỘNG THÁNG 08 – ĐẠT 26.07%."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 32: KHỞI ĐỘNG THÁNG 08 – ĐẠT 26.07%.`
   },
   "W31": {
     "title": "Tuần 31 (Cuối Tháng 7)",
@@ -1229,7 +1291,7 @@
       "banMoiDiff": "Bùng nổ",
       "progressWidth": "89.30%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 31 (CUỐI THÁNG 7) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 31 (CUỐI THÁNG 7) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 7,448,335,222 ₫ / Target: 8,336,000,000 ₫ (Đạt 89.30%).
@@ -1240,7 +1302,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -176 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 31: VỀ ĐÍCH THÁNG 07 – ĐẠT 89.30% TARGET."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 31: VỀ ĐÍCH THÁNG 07 – ĐẠT 89.30% TARGET.`
   },
   "W30": {
     "title": "Tuần 30 (Giữa Tháng 7)",
@@ -1278,7 +1340,7 @@
       "banMoiDiff": "Đạt mốc",
       "progressWidth": "72.68%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 30 (GIỮA THÁNG 7) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 30 (GIỮA THÁNG 7) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 6,058,709,425 ₫ / Target: 8,336,000,000 ₫ (Đạt 72.68%).
@@ -1289,7 +1351,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: +86 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 30: ĐẠT 72.68% TARGET THÁNG 07."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 30: ĐẠT 72.68% TARGET THÁNG 07.`
   },
   "W29": {
     "title": "Tuần 29 (Tháng 7)",
@@ -1327,7 +1389,7 @@
       "banMoiDiff": "Tiến độ",
       "progressWidth": "54.70%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 29 (THÁNG 7) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 29 (THÁNG 7) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 4,409,510,546 ₫ / Target: 8,336,000,000 ₫ (Đạt 54.70%).
@@ -1338,7 +1400,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: -45 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 29: ĐẠT 54.70% TARGET THÁNG 07."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 29: ĐẠT 54.70% TARGET THÁNG 07.`
   },
   "W28": {
     "title": "Tuần 28 (Đầu Tháng 7)",
@@ -1376,7 +1438,7 @@
       "banMoiDiff": "Khởi đầu",
       "progressWidth": "32.00%"
     },
-    "briefing": "📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 28 (ĐẦU THÁNG 7) – VÙNG HCM
+    "briefing": `📢 [EXECUTIVE OPS BRIEFING] BÁO CÁO KINH DOANH TUẦN 28 (ĐẦU THÁNG 7) – VÙNG HCM
 --------------------------------------------------------------------------------------------------
 1. KẾT QUẢ KINH DOANH TOÀN VÙNG:
    • Lũy kế Doanh thu LTC SO: 2,659,605,183 ₫ / Target: 8,336,000,000 ₫ (Đạt 32.00%).
@@ -1387,7 +1449,7 @@
 
 2. TÌNH HÌNH BIẾN ĐỘNG KHÁCH HÀNG:
    • Biến động Khách hàng: +129 KH.
-   • Đánh giá: ĐIỀU HÀNH TUẦN 28: KHỞI ĐỘNG THÁNG 07 – ĐẠT 32.00%."
+   • Đánh giá: ĐIỀU HÀNH TUẦN 28: KHỞI ĐỘNG THÁNG 07 – ĐẠT 32.00%.`
   }
 };
 
@@ -1529,7 +1591,8 @@
       });
     }
 
-    switchWeek("W39");
-  </script>
+    switchWeek('W40');
+  
+</script>
 </body>
 </html>
